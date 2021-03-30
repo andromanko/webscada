@@ -1,0 +1,36 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>RSignup</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="../styles/styles.css" rel="stylesheet" />
+<link href="../styles/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<br />
+	<div class="form-wrapper">
+		<form action="#" th:object="${dto}" method="post">
+			<div class="form-group">
+				<label for="login">Login</label> <input 
+				id="login"	class="form-control" type="text" 
+				th:field="*{login}" required />
+			</div>
+			<div class="form-group">
+				<label for="password">Password:</label> <input id="password"
+					class="form-control" type="password" 
+					th:field="*{password}"			required />
+			</div>
+			<div class="form-group">
+				<label for="email">E-mail:</label> <input 
+				id="email"	class="form-control" type="text" 
+				th:field="*{email}"					required />
+			</div>
+			<br />
+			<div class="double-button-wrapper">
+				<input type="submit" value="Submit" class="btn btn-primary" /> 
+				<input type="reset" value="Reset" class="btn btn-danger" />
+			</div>
+		</form>
+	</div>
+	<br />
+</body>
+</html>

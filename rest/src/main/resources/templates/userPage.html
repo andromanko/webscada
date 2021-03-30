@@ -1,0 +1,23 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>User page</title>
+<link href="../styles/styles.css" rel="stylesheet" />
+<!-- 
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+ -->
+</head>
+<body>
+
+	<div>
+		<h1 th:text = "${user.login} + '\'s personal page'" />
+	</div>
+	<div class = "user-wrapper">
+		<div class = "user-div">
+			<p th:text="'User id is: ' + ${user.id}" />
+			<p th:text="'User login is: ' + ${user.login}" />
+			<p th:text="'User e-mail is: ' + ${user.email}" />
+			<img th:src = "@{'../images/' + ${user.login} + '.jpg'}" />
+		</div>
+	</div>
+</body>
+</html>

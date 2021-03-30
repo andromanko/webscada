@@ -1,0 +1,21 @@
+.user-wrapper {
+	width: 450px;
+	height: 500px;
+	border:	1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.user-div {
+	border:	1px solid red;
+	width: 200px;
+	height: 140px;
+	padding-left: 10px;
+}
+
+.user-div:hover {
+	transform: scale(1.05);
+	background-color: lightgray;
+}

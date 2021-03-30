@@ -1,0 +1,21 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Users page</title>
+<link href="../styles/styles.css" rel="stylesheet" />
+<link href="../styles/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+	<div>
+		<h2>Update user< UsersFormPageUpd/h2>
+	</div>
+	<div class = "user-wrapper">
+		<form action="#" th:action="@{upd}" th:object="${user}" class="form-control" method="post" enctype="multipart/form-data">
+			<input id="login" type="text" th:field="*{login}" class="form-control" placeholder="login" required/>
+			<input id="e-mail" type="text" th:field="*{email}" class="form-control" placeholder="email" required/>
+			<input id="my-file-selector" name="file" type="file" />
+			<input type="submit" value="Submit" class = "btn btn-success"/>
+		</form>
+	</div>
+</body>
+</html>

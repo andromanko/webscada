@@ -1,0 +1,21 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Users page</title>
+<link href="../styles/styles.css" rel="stylesheet" />
+<link href="../styles/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+
+	<div>
+		<h2>RAdd user usersFormPage</h2>
+	</div>
+	<div class = "user-wrapper">
+		<form action="#" th:action="@{add}" th:object="${user}" class="form-control" method="post">
+			<input id="login" type="text" th:field="*{login}" class="form-control" required/>
+			<input id="password" type="text" th:field="*{password}" class="form-control" required/>
+			<input id="email" type="text" th:field="*{email}" class="form-control" required/>
+			<input type="submit" value="Submit" class = "btn btn-success"/>
+		</form>
+	</div>
+</body>
+</html>

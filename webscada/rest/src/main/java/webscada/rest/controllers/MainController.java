@@ -24,4 +24,14 @@ public class MainController {
     public String error403() {
         return "/error/403";
     }
+    
+    @GetMapping("/devices")
+    public String devices() {
+        return "devices";
+    }
+    
+    @GetMapping("/monitor")
+    public String monitor() {
+        return "monitor";
+    }
 }

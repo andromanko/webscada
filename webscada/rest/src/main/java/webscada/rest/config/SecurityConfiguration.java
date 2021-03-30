@@ -45,7 +45,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
         .antMatchers("/", "/signup/**","/signin/**", "/js/**", "/styles/**", "/images/**").permitAll()
-        .antMatchers("/admin/**").hasRole("ADMIN").anyRequest().authenticated().and().formLogin().loginPage("/login")
+        .antMatchers("/", "/devices/**", "/js/**", "/styles/**", "/images/**").hasAnyRole("ENGINEER","DEVELOPER")
+        .antMatchers("/", "/monitor/**", "/js/**", "/styles/**", "/images/**").hasAnyRole("VIEWER","ENGINEER","ADMIN","DEVELOPER","N")
+        .antMatchers("/admin/**").hasAnyRole("ADMIN","DEVELOPER").anyRequest().authenticated().and().formLogin().loginPage("/login")
         .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true)
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()
         .and().exceptionHandling().accessDeniedHandler(accessDeniedHandler);
@@ -84,7 +86,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   		((InMemoryUsersConnectionRepository) usersConnectionRepository).setConnectionSignUp(facebookConnectionSignUp);
   		ProviderSignInController providerSignInController = new ProviderSignInController(connectionFactoryLocator,
   				usersConnectionRepository, new FacebookSignInAdapter());
-  		providerSignInController.setPostSignInUrl("/users");
+  		providerSignInController.setPostSignInUrl("/monitor");
   		return providerSignInController;
   	}
   	@Bean

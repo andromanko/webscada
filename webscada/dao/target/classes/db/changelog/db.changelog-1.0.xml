@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+	<changeSet id="changelog-1.0" author="roma"
+		objectQuotingStrategy="LEGACY">
+<!--СТАНДАРТ 	юзвери -->
+		<createTable tableName="user">
+			<column name="id" type="bigint" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="login" type="varchar(40)">
+				<constraints nullable="false" />
+			</column>
+			<column name="password" type="varchar(255)" />
+			<column name="info" type="varchar(255)" />
+			<column name="email" type="varchar(50)" />
+			<column name="avatar" type="varchar(255)" />
+			<column name="enabled" type="boolean" />
+		</createTable>
+<!--СТАНДАРТ 	роли-->
+		<createTable tableName="role">
+			<column name="id" type="tinyint(10)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="role" type="varchar(40)" />
+		</createTable>
+<!--СТАНДАРТ 	cоответствие юзер/роль-->
+		<createTable tableName="user_role">
+			<column name="user_id" type="bigint" />
+			<column name="role_id" type="tinyint(10)" />
+		</createTable>
+<!--типы устройств (modbus_tcp, modbus-rtu, S7, mitsubishi etc)-->
+		<createTable tableName="dev_type">
+			<column name="id" type="tinyint(255)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="description" type="varchar(255)" />
+			<column name="url" type="varchar(40)" />
+			<column name="type" type="varchar(40)" />
+		</createTable>
+<!--  устройства в системе -->
+		<createTable tableName="device">
+			<column name="id" type="tinyint(255)" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="dev_name" type="varchar(255)" />
+			<column name="type_id" type="tinyint(255)" />
+			<column name="IP" type="varchar(255)" />
+			<column name="port" type="SMALLINT" />
+			<column name="addr" type="tinyint(255)" />
+		</createTable>
+<!--перечень данных, которые нужно собирать с указанием границ и единиц-->
+		<createTable tableName="value">
+			<column name="id" type="integer" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="name" type="varchar(50)" />
+			<column name="value" type="float" />
+			<column name="amount" type="tinyint(255)" />
+			<column name="device_id" type="tinyint(255)" />
+			<column name="units" type="varchar(10)" />
+			<column name="addr" type="varchar(40)" />
+			<column name="max" type="float" />
+			<column name="max_ms" type="integer" />
+			<column name="max_event_id" type="integer" />
+			<column name="min" type="float" />
+			<column name="min_ms" type="integer" />
+			<column name="min_event_id" type="integer" />
+		</createTable>
+<!--события текстовки-->
+		<createTable tableName="event_text">
+			<column name="id" type="integer" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="text" type="varchar(255)" />
+		</createTable>
+<!--лог событий-->
+		<createTable tableName="event">
+			<column name="id" type="integer" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="date" type="datetime(6)" />
+			<column name="event_id" type="integer" />
+			<column name="value_id" type="integer" />
+			<column name="device_id" type="tinyint(255)" />
+			<column name="user_id" type="bigint" />
+		</createTable>
+<!--coming soon предстоит продумать лог данных, графики и быстрые графики-->
+	</changeSet>
+
+</databaseChangeLog>                

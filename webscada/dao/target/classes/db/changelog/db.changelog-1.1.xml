@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+	<changeSet id="changelog-1.1" author="roma"
+		objectQuotingStrategy="LEGACY">
+<!-- 	юзер-юзерРоль -->
+		<addForeignKeyConstraint
+			baseColumnNames="user_id" 
+			baseTableName="user_role"
+			constraintName="fk_user_role_id" 
+			referencedColumnNames="id"
+			referencedTableName="user" />
+<!-- 	роль-юзерРоль -->
+		<addForeignKeyConstraint
+			baseColumnNames="role_id" 
+			baseTableName="user_role"
+			constraintName="fk_role_id" 
+			referencedColumnNames="id"
+			referencedTableName="role" />
+<!-- устройства в системе - драйверы устройств -->
+		<addForeignKeyConstraint
+			baseColumnNames="type_id" 
+			baseTableName="device"
+			constraintName="fk_driver_id" 
+			referencedColumnNames="id"
+			referencedTableName="dev_type" />			
+<!-- данные - устройстваИД -->
+		<addForeignKeyConstraint
+			baseColumnNames="device_id" 
+			baseTableName="value"
+			constraintName="fk_device_id" 
+			referencedColumnNames="id"
+			referencedTableName="device" />		
+<!-- events Dev -->
+		<addForeignKeyConstraint
+			baseColumnNames="device_id" 
+			baseTableName="event"
+			constraintName="fk_eventDev_id" 
+			referencedColumnNames="id"
+			referencedTableName="device" />	
+<!-- events Val-->
+		<addForeignKeyConstraint
+			baseColumnNames="value_id" 
+			baseTableName="event"
+			constraintName="fk_eventVal_id" 
+			referencedColumnNames="id"
+			referencedTableName="value" />			
+<!-- events  txt-->
+		<addForeignKeyConstraint
+			baseColumnNames="event_id" 
+			baseTableName="event"
+			constraintName="fk_event_id" 
+			referencedColumnNames="id"
+			referencedTableName="event_text" />	
+<!-- events  user-->
+		<addForeignKeyConstraint
+			baseColumnNames="user_id" 
+			baseTableName="event"
+			constraintName="fk_event_user_id" 
+			referencedColumnNames="id"
+			referencedTableName="user" />	
+		<!-- events  id max-->
+		<addForeignKeyConstraint
+			baseColumnNames="max_event_id" 
+			baseTableName="value"
+			constraintName="fk_event_valmax_id" 
+			referencedColumnNames="id"
+			referencedTableName="event_text" />
+		<!-- events  id min-->
+		<addForeignKeyConstraint
+			baseColumnNames="min_event_id" 
+			baseTableName="value"
+			constraintName="fk_event_valmin_id" 
+			referencedColumnNames="id"
+			referencedTableName="event_text" />		
+		</changeSet>
+</databaseChangeLog>

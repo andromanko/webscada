@@ -31,11 +31,13 @@
 		<div>
 			<form action="/signin/facebook" method="post">
 				<input type="hidden" name="scope" value="email, public_profile" />
+				<input type="image"
+					th:src="@{'http://localhost:8080/images/fbook.svg'}"
+					height="70" alt="SignWothFbook">
 				<input type="submit" value="Sign In With Facebook">
 			</form>
 		</div>
 	</div>
 	<h1>LOG IN TO FACEBOOK COMING SOON</h1>
-
 </body>
 </html>

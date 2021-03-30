@@ -7,5 +7,5 @@ import webscada.entity.User;
 @Setter
 @Getter
 public class FbokMapper extends User {
-	private String name;
+	private String first_name;
 }

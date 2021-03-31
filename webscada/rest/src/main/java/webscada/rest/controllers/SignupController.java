@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import webscada.api.dto.UserDto;
 import webscada.api.services.IUserService;
+import webscada.entity.User;
 
 @Controller
 @RequestMapping(value = "/signup")
@@ -38,7 +39,8 @@ public class SignupController {
     public String submitCreatingUser(@ModelAttribute UserDto dto, Model model, HttpServletRequest request) {
         try {
             model.addAttribute("dto", dto);
-            UserDto dtoNew = userService.createUser(dto);
+            UserDto dtoNew = userService.createUser(dto); //внутри мы "новенькому" присавиваем роль VIEWER
+            UserDto newUser = userService.findUser(dtoNew.getId());
             //здесь пробуем войти новоприбывшим юзером
             authWithAuthManager(request, dto.getLogin(), dtoNew.getPassword());
         } catch (Exception e) {

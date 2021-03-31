@@ -1,7 +1,9 @@
 package webscada.services.services;
 
 import java.io.IOException;
+import java.util.Set;
 import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,6 +18,7 @@ import webscada.api.mappers.UserMapper;
 import webscada.api.services.IUserService;
 //import eu.it.academy.entities.Pet;
 import webscada.entity.User;
+import webscada.entity.Role;
 import webscada.services.utils.LogoFileUploader;
 //import eu.it.academy.web.BookDetails;
 //import eu.it.academy.web.WebScraper;
@@ -50,14 +53,20 @@ public class UserService implements IUserService {
         
     @Override
     public UserDto createUser(UserDto userDto) {
-        User user = new User();
+        User user = new User(); //вот! создали ЮЗЕРА
         user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-//        user.getRoles().add(new Role("VIEWER"));
-        User savedUser = this.userJPADao.save(user);
+//        .add(new Role("VIEWER"));
+        Set <Role> roles = user.getRoles();
+//       Role role = new Role 
+  //      user.setRoles(roles);
+        User savedUser = this.userJPADao.save(user); //ЗАПИСАЛИ ЮЗЕРА
+        
         return UserMapper.mapUserDto(savedUser);
     }
+    
+    
 
     @Override
     public void updateUser(String login, UserDto userDto, MultipartFile file) {

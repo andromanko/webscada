@@ -2,6 +2,7 @@ package webscada.services.services;
 
 import java.io.IOException;
 import java.util.Set;
+import java.util.HashSet;
 import java.util.List;
 
 
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 //import webscada.api.dao.IPetJPADao;
 import webscada.api.dao.IUserJPADao;
+import webscada.api.dao.IRoleJPADao;
 import webscada.api.dto.UserDto;
 //import eu.it.academy.api.dto.UserPetIdsDto;
 import webscada.api.mappers.UserMapper;
@@ -30,6 +32,8 @@ public class UserService implements IUserService {
 
     @Autowired
     private IUserJPADao userJPADao;
+    @Autowired
+    private IRoleJPADao roleJPADao;
 //
 //    @Autowired
 //    private IPetJPADao petJPADao;
@@ -57,11 +61,15 @@ public class UserService implements IUserService {
         user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-//        .add(new Role("VIEWER"));
-        Set <Role> roles = user.getRoles();
-//       Role role = new Role 
-  //      user.setRoles(roles);
+//        .add(new Role("VIEWER")); //если мы создаем роли - их у юзера быть не может. т.о. Set равен нулю! 
+        Role role=new Role();
+        role=roleJPADao.findByRoleName("VIEWER");//находит!
+        HashSet<Role> roles = new HashSet<Role>();//null;//user.getRoles();
+        
+        roles.add(role);//где-то ошибся в синтаксисе?!
+        user.setRoles(roles);
         User savedUser = this.userJPADao.save(user); //ЗАПИСАЛИ ЮЗЕРА
+        //TODO автовход. Регистрация нового фбукюзера сделана.
         
         return UserMapper.mapUserDto(savedUser);
     }

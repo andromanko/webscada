@@ -45,8 +45,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
         .antMatchers("/", "/signup/**","/signin/**", "/js/**", "/styles/**", "/images/**").permitAll()
-        .antMatchers("/", "/devices/**", "/js/**", "/styles/**", "/images/**").hasAnyRole("ENGINEER","DEVELOPER")
-        .antMatchers("/", "/monitor/**", "/js/**", "/styles/**", "/images/**").hasAnyRole("VIEWER","ENGINEER","ADMIN","DEVELOPER","N")
+        .antMatchers("/devices/**").hasAnyRole("ENGINEER","DEVELOPER")
+        .antMatchers("/monitor/**").hasAnyRole("VIEWER","ENGINEER","ADMIN","DEVELOPER","CONTROL")
         .antMatchers("/admin/**").hasAnyRole("ADMIN","DEVELOPER").anyRequest().authenticated().and().formLogin().loginPage("/login")
         .permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true)
         .logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/").permitAll()

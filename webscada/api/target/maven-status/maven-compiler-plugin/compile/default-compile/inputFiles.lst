@@ -4,5 +4,6 @@ D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\services\IUserServ
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\services\IDevService.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IAGenericDao.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IUserDao.java
+D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IRoleJPADao.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\mappers\UserMapper.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dto\DevDto.java

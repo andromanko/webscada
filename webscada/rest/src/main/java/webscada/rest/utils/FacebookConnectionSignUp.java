@@ -24,9 +24,12 @@ public class FacebookConnectionSignUp implements ConnectionSignUp {
         FbokMapper userProfile = facebook.fetchObject("me", FbokMapper.class, arr);
                 
         UserDto userDto = new UserDto();
+        userDto.setId(userProfile.getId());
         userDto.setLogin((userProfile.getFirst_name()));
+        userDto.setEmail((userProfile.getEmail()));
         userDto.setPassword(String.valueOf(userProfile.getId()));
         userService.createUser(userDto);
+        
         return userProfile.getLogin();
     }
 }

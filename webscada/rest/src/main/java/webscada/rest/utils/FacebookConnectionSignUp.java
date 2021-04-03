@@ -29,8 +29,7 @@ public class FacebookConnectionSignUp implements ConnectionSignUp {
         userDto.setEmail((userProfile.getEmail()));
         userDto.setPassword(String.valueOf(userProfile.getId()));
         userService.createUser(userDto);
-        
-        return userProfile.getLogin();
+        return userDto.getLogin();
     }
 }
 

@@ -1,5 +1,6 @@
 package webscada.rest.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +27,14 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 
+//	@Autowired
+//	Principal principal;//=getPrincipal();
+	
+	//Principal principal;
+	
 	@GetMapping
 	public ModelAndView findUsers() {
+		
 		List<UserDto> users = userService.getUsers();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("usersPage");

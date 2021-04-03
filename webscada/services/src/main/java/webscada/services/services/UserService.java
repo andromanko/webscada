@@ -1,7 +1,7 @@
 package webscada.services.services;
 
 import java.io.IOException;
-import java.util.Set;
+
 import java.util.HashSet;
 import java.util.List;
 
@@ -63,7 +63,7 @@ public class UserService implements IUserService {
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 //        .add(new Role("VIEWER")); //если мы создаем роли - их у юзера быть не может. т.о. Set равен нулю! 
         Role role=new Role();
-        role=roleJPADao.findByRoleName("VIEWER");//находит!
+        role=roleJPADao.findByRoleName("ROLE_VIEWER");//находит!
         HashSet<Role> roles = new HashSet<Role>();//null;//user.getRoles();
         
         roles.add(role);//где-то ошибся в синтаксисе?!

@@ -1,5 +1,7 @@
 package webscada.rest.controllers;
 
+import java.security.Principal;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,9 @@ public class SignupController {
     
     @Autowired
     AuthenticationManager authenticationManager;
+    
+//    @Autowired
+//    Principal principal;
     
     @GetMapping
     public String signupUser(Model model) {

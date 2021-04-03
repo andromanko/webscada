@@ -13,6 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>webscada</name>
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
 	<modules>
 		<module>entity</module>
 		<module>main</module>

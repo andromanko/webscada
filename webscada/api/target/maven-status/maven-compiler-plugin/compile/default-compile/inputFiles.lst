@@ -2,6 +2,7 @@
 /home/roma/git/webscada/webscada/webscada/api/src/main/java/webscada/api/dao/IUserJPADao.java
 /home/roma/git/webscada/webscada/webscada/api/src/main/java/webscada/api/dao/IUserDao.java
 /home/roma/git/webscada/webscada/webscada/api/src/main/java/webscada/api/services/IUserService.java
+/home/roma/git/webscada/webscada/webscada/api/src/main/java/webscada/api/utils/IEmailSender.java
 /home/roma/git/webscada/webscada/webscada/api/src/main/java/webscada/api/dto/DevDto.java
 /home/roma/git/webscada/webscada/webscada/api/src/main/java/webscada/api/dto/UserDto.java
 /home/roma/git/webscada/webscada/webscada/api/src/main/java/webscada/api/services/IDevService.java

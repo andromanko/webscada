@@ -24,5 +24,6 @@
 		<module>services</module>
 		<module>rest</module>
 		<module>logger</module>
+		<module>utils</module>
 	</modules>
 </project>

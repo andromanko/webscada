@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,41 +24,61 @@ import webscada.services.utils.LogoFileUploader;
 //import eu.it.academy.web.BookDetails;
 //import eu.it.academy.web.WebScraper;
 import lombok.extern.slf4j.Slf4j;
+import webscada.api.utils.IEmailSender;
 
 @Slf4j
 @Service
 public class UserService implements IUserService {
 
+	@Autowired
+	private IUserJPADao userJPADao;
+	@Autowired
+	private IRoleJPADao roleJPADao;
     @Autowired
-    private IUserJPADao userJPADao;
-    @Autowired
-    private IRoleJPADao roleJPADao;
+    private IEmailSender emailSender;
 //
 //    @Autowired
 //    private IPetJPADao petJPADao;
 //    
-    @Autowired
-    private PasswordEncoder passwordEncoder;
-    
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
 //    @Autowired
 //    WebScraper webScraper;
 
-    @Override
-    public UserDto findUser(long id) {
-        User user = this.userJPADao.findById(id).orElse(null);
-        return (user != null) ? UserMapper.mapUserDto(user) : null;
-    }
-    
-    @Override
-    public UserDto findUserByLogin(String login) {
-        return UserMapper.mapUserDto(this.userJPADao.findByLogin(login));
-    }
-        
-    @Override
-    public UserDto createUser(UserDto userDto) {
-        User user = new User(); //вот! создали ЮЗЕРА
+	@Override
+	public UserDto findUser(long id) {
+		User user = this.userJPADao.findById(id).orElse(null);
+		return (user != null) ? UserMapper.mapUserDto(user) : null;
+	}
+
+	@Override
+	public UserDto findUserByLogin(String login) {
+		return UserMapper.mapUserDto(this.userJPADao.findByLogin(login));
+	}
+
+	@Override
+    public UserDto createUser(UserDto userDto) {// throws Exception {
+        //проверка новоЮзера на ужеСуществующегоЮзера
+    	//слито от Авдейчика из одного из его видео =)
+    	//String newUser = userDto.getLogin();
+    	//String email = userDto.getEmail();
+    	//List<UserDto> existingUsers = getUsers();
+    	//дальше - см где throw
+    	
+    	User user = new User(); //вот! создали ЮЗЕРА
         user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
+        
+        if ((this.userJPADao.findByLogin(userDto.getLogin())!=null) ||
+        (this.userJPADao.findByEmail(userDto.getEmail())!=null) )
+        {
+        	log.error("Failed to registerUser. The Login or Email already exists");
+        	//throw new UserAlreadyExistsException();
+        	return null;//моё художество. надо красивее
+        }
+        
+        
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
 //        .add(new Role("VIEWER")); //если мы создаем роли - их у юзера быть не может. т.о. Set равен нулю! 
         Role role=new Role();
@@ -71,36 +90,51 @@ public class UserService implements IUserService {
         User savedUser = this.userJPADao.save(user); //ЗАПИСАЛИ ЮЗЕРА
         //TODO автовход. Регистрация нового фбукюзера сделана.
         
-        return UserMapper.mapUserDto(savedUser);
-    }
-    
-    
-
-    @Override
-    public void updateUser(String login, UserDto userDto, MultipartFile file) {
-//        User user = this.userJPADao.findById(id).orElse(null);
-        User user = this.userJPADao.findByLogin(login);
-        if(user != null) {
-            user.setLogin(userDto.getLogin());
-            user.setEmail(userDto.getEmail());
-            this.userJPADao.save(user);
-        }
+        UserDto registeredUser = UserMapper.mapUserDto(savedUser); 
+        
         try {
-            LogoFileUploader.updateOrCreateLogo(file, userDto);
-        } catch (IOException e) {
-            log.error("Failed to upload image. Error message: {}", e.getMessage());
-        }
+			emailSender.sendEmailToAdmin(registeredUser,1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("FFFailed to sent email");
+		}
+        
+        return registeredUser;
     }
 
-    @Override
-    public void deleteUser(long id) {
-        this.userJPADao.deleteById(id);
-    }
+	@Override
+	public void updateUser(String login, UserDto userDto, MultipartFile file) {
+//        User user = this.userJPADao.findById(id).orElse(null);
+		User user = this.userJPADao.findByLogin(login);
+		if (user != null) {
+			user.setLogin(userDto.getLogin());
+			user.setEmail(userDto.getEmail());
+			this.userJPADao.save(user);
+		}
+		try {
+			LogoFileUploader.updateOrCreateLogo(file, userDto);
+		} catch (IOException e) {
+			log.error("Failed to upload image. Error message: {}", e.getMessage());
+		}
+		
+		try {
+			emailSender.sendEmailFromAdmin(user,1);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			log.error("FFFailed to sent email from upd");
+		}
+		
+	}
 
-    @Override
-    public List<UserDto> getUsers() {
-        return UserMapper.mapUserDtos(userJPADao.findAll());
-    }
+	@Override
+	public void deleteUser(long id) {
+		this.userJPADao.deleteById(id);
+	}
+
+	@Override
+	public List<UserDto> getUsers() {
+		return UserMapper.mapUserDtos(userJPADao.findAll());
+	}
 
 //    @Override
 //    public void assingPetToUser(UserPetIdsDto ids) {
@@ -117,13 +151,6 @@ public class UserService implements IUserService {
 //        String stop = "stop";
 //    }
 
-    
-    
-    
-    
-    
-    
-    
 //    @Autowired
 //    private IUserDao userDao;
 //

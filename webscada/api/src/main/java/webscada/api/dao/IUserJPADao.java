@@ -6,4 +6,5 @@ import webscada.entity.User;
 public interface IUserJPADao extends JpaRepository<User, Long> {
 
 	User findByLogin(String login);
+	User findByEmail(String email);
 }

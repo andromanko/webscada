@@ -1,0 +1,10 @@
+<html>
+    <body>
+        <pre>
+        Hello, ${userName},
+        your status in the WebScada system 
+        has been changed to ${status}. 
+        Thanks!
+        </pre>
+    </body>
+</html>

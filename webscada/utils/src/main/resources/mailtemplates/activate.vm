@@ -1,0 +1,10 @@
+<html>
+    <body>
+        <pre>
+        Hello,
+        can you please ${status} the following user:
+        User name: ${userName},
+        Thanks a lot!
+        </pre>
+    </body>
+</html>

@@ -47,7 +47,7 @@ public class SignupController {
             UserDto dtoNew = userService.createUser(dto); //внутри мы "новенькому" присавиваем роль VIEWER
             UserDto newUser = userService.findUser(dtoNew.getId());
             //здесь пробуем войти новоприбывшим юзером
-            authWithAuthManager(request, dto.getLogin(), dtoNew.getPassword());
+            authWithAuthManager(request, dto.getLogin(), dto.getPassword());
         } catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "/error/createEntityError";

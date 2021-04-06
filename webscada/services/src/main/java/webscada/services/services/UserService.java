@@ -69,9 +69,9 @@ public class UserService implements IUserService {
     	User user = new User(); //вот! создали ЮЗЕРА
         user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
-        
-        if ((this.userJPADao.findByLogin(userDto.getLogin())!=null) ||
-        (this.userJPADao.findByEmail(userDto.getEmail())!=null) )
+        User userByLogin=this.userJPADao.findByLogin(userDto.getLogin());
+        User userByEmail=this.userJPADao.findByEmail(userDto.getEmail());
+        if (((userByLogin)!=null) || ((userByEmail)!=null) )
         {
         	log.error("Failed to registerUser. The Login or Email already exists");
         	//throw new UserAlreadyExistsException();

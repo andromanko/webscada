@@ -1,0 +1,16 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>ERRor 403 happened!</title>
+<link href="../../styles/styles.css" rel="stylesheet" />
+<link href="../../styles/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="form-wrapper">
+		<h1 th:text="${errorMessage}"></h1>
+	</div>
+	<br />
+	<div>
+		<a href="/signup/">Go back</a>
+	</div>
+</body>
+</html>

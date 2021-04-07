@@ -24,7 +24,7 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Entity
 @Table(name = "dev_type")											
-public class TypeDev extends AEntity<Integer> {
+public class DevType extends AEntity<Integer> {
 
     @Column(name = "type")
     private String type;

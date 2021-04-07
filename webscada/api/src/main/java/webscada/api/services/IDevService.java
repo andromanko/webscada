@@ -6,25 +6,29 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import webscada.api.dto.DevDto;
 //import webscada.api.dto.UserPetIdsDto;
+import webscada.api.dto.DevTypeDto;
+import webscada.api.dto.DevTypeIdsDto;
 
 @Service
 public interface IDevService {
 
-    DevDto findDev(int id);
+    DevDto findDev(long id);
     
     DevDto findDevByKeyWords(String KeyWords);
     
-//    UserDto findUserByEmail(String email);
+    DevDto findDevByType(DevTypeDto devType);
     
     DevDto createDev(DevDto dev);
     
-    void updateDev(int id, DevDto dev);//, MultipartFile file);
+    void updateDev(long id, DevDto dev);//, MultipartFile file);
     
-    void deleteDev(int id);
+    void deleteDev(long id);
     
-//    List<DevDto> getUsers();
 
-//    void assingPetToUser(UserPetIdsDto ids);
+    List<DevDto> getDevs();
+
+
+    void assingDevToType(DevTypeIdsDto ids);
 
 //    void getBookByIsbn(String isbn);
 }

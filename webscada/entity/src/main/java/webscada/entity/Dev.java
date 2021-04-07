@@ -26,10 +26,10 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder 
 @Entity
 @Table(name="device")
-public class Dev extends AEntity<Integer> {
+public class Dev extends AEntity<Long> {
 	
 	@Column(name="DevName")
-	private String DevName;
+	private String devName;
 	
 	@Column(name="IP")
 	private String IP;
@@ -42,7 +42,7 @@ public class Dev extends AEntity<Integer> {
 	
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "type_id", referencedColumnName = "id")
-    private TypeDev type_id;
+    private DevType type_id;
     
     @OneToMany(mappedBy = "dev_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Event> events;

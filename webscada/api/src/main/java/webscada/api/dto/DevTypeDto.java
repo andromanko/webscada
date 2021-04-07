@@ -12,12 +12,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DevDto {
+public class DevTypeDto {
 
-    private long id;
-    private String devName;
-    private String IP;
-    private byte addr;
-    private short port;
-    private DevTypeDto devType;
+    private int id;
+    private String type;
+    private String description;
+    private String url;
+    private List<DevDto> devs;
 }

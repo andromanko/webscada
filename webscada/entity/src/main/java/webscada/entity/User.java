@@ -41,8 +41,8 @@ public class User extends AEntity<Long> {
     @Column(name = "info")
     private String info;    
     
-//    @Column(name = "enable")
-//    private boolean enable;    
+    @Column(name = "enabled")
+    private boolean enabled;    
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))

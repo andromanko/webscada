@@ -5,5 +5,5 @@ import webscada.entity.Dev;
 
 public interface IDevJPADao extends JpaRepository<Dev, Integer> {
 
-	Dev findByName(String dev);
+	Dev findByDevName(String dev);
 }

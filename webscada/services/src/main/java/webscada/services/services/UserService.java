@@ -69,6 +69,7 @@ public class UserService implements IUserService {
     	User user = new User(); //вот! создали ЮЗЕРА
         user.setLogin(userDto.getLogin());
         user.setEmail(userDto.getEmail());
+        user.setEnabled(1);
         User userByLogin=this.userJPADao.findByLogin(userDto.getLogin());
         User userByEmail=this.userJPADao.findByEmail(userDto.getEmail());
         if (((userByLogin)!=null) || ((userByEmail)!=null) )
@@ -109,6 +110,7 @@ public class UserService implements IUserService {
 		if (user != null) {
 			user.setLogin(userDto.getLogin());
 			user.setEmail(userDto.getEmail());
+			user.setEnabled(userDto.setEnabled());
 			this.userJPADao.save(user);
 		}
 		try {

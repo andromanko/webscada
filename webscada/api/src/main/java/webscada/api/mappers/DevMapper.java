@@ -13,7 +13,7 @@ public class DevMapper {
     public Dev mapDev(DevDto source) {
         return Dev.builder()
                 .id(source.getId())
-                .DevName(source.getDevName())
+                .devName(source.getDevName())
                 .IP(source.getIP())
                 .addr(source.getAddr())
                 .port(source.getPort())

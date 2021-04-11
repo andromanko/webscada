@@ -14,9 +14,9 @@ public interface IDevService {
 
     DevDto findDev(long id);
     
-    DevDto findDevByKeyWords(String KeyWords);
+//    DevDto findDevByKeyWords(String KeyWords);
     
-    DevDto findDevByType(DevTypeDto devType);
+//    DevDto findDevByType(DevTypeDto devType);
     
     DevDto createDev(DevDto dev);
     
@@ -28,7 +28,7 @@ public interface IDevService {
     List<DevDto> getDevs();
 
 
-    void assingDevToType(DevTypeIdsDto ids);
+   // void assignDevToType(DevTypeIdsDto ids);
 
 //    void getBookByIsbn(String isbn);
 }

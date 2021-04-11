@@ -30,11 +30,11 @@ public class DevMapper {
                 .build();
     }
 
-    public List<Dev> mapUsers(List<DevDto> source) {
+    public List<Dev> mapDevs(List<DevDto> source) {
         return source.stream().map(DevMapper::mapDev).collect(Collectors.toList());
     }
     
-    public List<DevDto> mapUserDtos(List<Dev> source) {
+    public List<DevDto> mapDevDtos(List<Dev> source) {
         return source.stream().map(DevMapper::mapDevDto).collect(Collectors.toList());
     }
 }

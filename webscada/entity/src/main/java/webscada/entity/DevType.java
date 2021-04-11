@@ -27,7 +27,7 @@ import lombok.experimental.SuperBuilder;
 public class DevType extends AEntity<Integer> {
 
     @Column(name = "type")
-    private String type;
+    private String devType;
     
     @Column(name = "description")
     private String description;

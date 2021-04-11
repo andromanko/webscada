@@ -48,13 +48,13 @@ public class MainController {
         return "/error/403";
     }
     
-    @GetMapping("/devices")
-    public String devices() {
-    	
-    	//Principal principal;
-    	
-        return "devices";
-    }
+//    @GetMapping("/devices")
+//    public String devices() {
+//    	
+//    	//Principal principal;
+//    	
+//        return "devices";
+//    }
     
     @GetMapping("/monitor")
     public String monitor() {

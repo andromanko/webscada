@@ -16,7 +16,7 @@ public class UserMapper {
                 .login(source.getLogin())
                 .email(source.getEmail())
                 .password(source.getPassword())
-                .enabled(source.getEnabled())
+                .enabled(source.isEnabled())
                 .build();
     }
 
@@ -26,10 +26,9 @@ public class UserMapper {
                 .login(source.getLogin())
                 .email(source.getEmail())
                 .password(source.getPassword())
-                .enabled(source.getEnabled())
+                .enabled(source.isEnabled())
                 .build();
     }
-
     public List<User> mapUsers(List<UserDto> source) {
         return source.stream().map(UserMapper::mapUser).collect(Collectors.toList());
     }

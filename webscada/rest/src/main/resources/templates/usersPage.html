@@ -9,7 +9,7 @@
 <body>
 
 	<div>
-		<h1 th:text="${title}" />
+		<h1 th:text="${title}"> </h1>
 	</div>
 	<div class="user-wrapper">
 		<div th:each="oneuser : ${usersList}" class="user-div">
@@ -43,5 +43,9 @@
 			</div>
 		</div>
 	</div>
+	
+	<a href="/users/add"> uSER ADD</a>
+	<a href="/users/upd"> update</a>
+	
 </body>
 </html>

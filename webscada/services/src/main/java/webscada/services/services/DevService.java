@@ -70,7 +70,7 @@ public class DevService implements IDevService {
 	@Override
 	public DevDto findDev(long id) {
 		//TODO косяк long/int
-		Dev dev = this.devDao.findById((int) id).orElse(null);
+		Dev dev = this.devDao.findById((long)1).orElse(null);
         return (dev != null ) ? DevMapper.mapDevDto(dev) : null;
 	}
 
@@ -93,7 +93,8 @@ public class DevService implements IDevService {
 	@Override
 	public List<DevDto> getDevs() {
 		// TODO Auto-generated method stub
-		return DevMapper.mapDevDtos(devDao.findAll());
+		List<Dev> devs = devDao.findAll();
+		return DevMapper.mapDevDtos(devs);
 	}
 
 //	@Override
@@ -102,7 +103,14 @@ public class DevService implements IDevService {
 //		return null;
 //	}
 
-
+	public int getData(long id) {
+		return 0;
+		
+	}
+	
+	public void sendData(long id, int data) {
+		
+	}
 
 
 

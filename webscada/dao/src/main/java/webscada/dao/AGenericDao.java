@@ -27,8 +27,8 @@ public abstract class AGenericDao<T extends AEntity<Long>> implements IAGenericD
         entityManager.persist(entity);
         return entity;
     }
-
-    public T get(int id) {
+    //TODO здесь был косяк. Был int и почему-то работало. Поставил long посмотрим...
+    public T get(long id) {
         return entityManager.find(getGenericClass(), id);
     }
     

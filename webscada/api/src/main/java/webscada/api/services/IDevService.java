@@ -26,7 +26,10 @@ public interface IDevService {
     
 
     List<DevDto> getDevs();
-
+    //TODO добавить до структуры данных
+    int getData(long id);
+  //TODO в общем случае должно возвращать успешность операции
+    void sendData(long id, int data);
 
    // void assignDevToType(DevTypeIdsDto ids);
 

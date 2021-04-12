@@ -33,7 +33,7 @@ public class DevController {
 	//Principal principal;
 	
 	@GetMapping
-	public ModelAndView findUsers() {
+	public ModelAndView findDevs() {
 		
 		List<DevDto> devs = devService.getDevs();
 		ModelAndView modelAndView = new ModelAndView();

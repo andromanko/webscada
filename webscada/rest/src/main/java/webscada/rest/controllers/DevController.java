@@ -44,7 +44,7 @@ public class DevController {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ModelAndView findDev(@PathVariable int id) {
+	public ModelAndView findDev(@PathVariable long id) {
 		DevDto dev = devService.findDev(id);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("devPage");

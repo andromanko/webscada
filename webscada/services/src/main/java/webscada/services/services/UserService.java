@@ -95,6 +95,7 @@ public class UserService implements IUserService {
         
         try {
 			emailSender.sendEmailToAdmin(registeredUser,1);
+			emailSender.sendEmailFromAdmin(savedUser,1);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("FFFailed to sent email");

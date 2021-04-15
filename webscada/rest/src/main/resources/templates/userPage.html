@@ -9,15 +9,16 @@
 <body>
 
 	<div>
-		<h1 th:text = "${user.login} + '\'s personal page'" />
+		<h1 th:text = "${user.login} + '\'s personal page'" ></h1>
 	</div>
-	<div class = "user-wrapper">
-		<div class = "user-div">
+	<div class = "user-description">
+<!-- 		<div class = "user-div"> -->
 			<p th:text="'User id is: ' + ${user.id}" />
 			<p th:text="'User login is: ' + ${user.login}" />
 			<p th:text="'User e-mail is: ' + ${user.email}" />
+			<p th:text="'About user: ' + ${user.info}" />
 			<img th:src = "@{'../images/' + ${user.login} + '.jpg'}" />
-		</div>
+<!-- 		</div> -->
 	</div>
 </body>
 </html>

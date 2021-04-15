@@ -6,7 +6,7 @@
                       http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
 	<changeSet id="changelog-1.0" author="roma"
 		objectQuotingStrategy="LEGACY">
-<!--СТАНДАРТ 	юзвери -->
+		<!--СТАНДАРТ юзвери -->
 		<createTable tableName="user">
 			<column name="id" type="bigint" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
@@ -17,50 +17,50 @@
 			<column name="password" type="varchar(255)" />
 			<column name="info" type="varchar(255)" />
 			<column name="email" type="varchar(50)" />
-			<column name="avatar" type="varchar(255)" />
+			<!-- <column name="avatar" type="varchar(255)" /> -->
 			<column name="enabled" type="boolean" />
 		</createTable>
-<!--СТАНДАРТ 	роли-->
+		<!--СТАНДАРТ роли -->
 		<createTable tableName="role">
-			<column name="id" type="tinyint(10)" autoIncrement="true">
+			<column name="id" type="integer" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="role" type="varchar(40)" />
 		</createTable>
-<!--СТАНДАРТ 	cоответствие юзер/роль-->
+		<!--СТАНДАРТ cоответствие юзер/роль -->
 		<createTable tableName="user_role">
 			<column name="user_id" type="bigint" />
-			<column name="role_id" type="tinyint(10)" />
+			<column name="role_id" type="integer" />
 		</createTable>
-<!--типы устройств (modbus_tcp, modbus-rtu, S7, mitsubishi etc)-->
+		<!--типы устройств (modbus_tcp, modbus-rtu, S7, mitsubishi etc) -->
 		<createTable tableName="dev_type">
-			<column name="id" type="tinyint(255)" autoIncrement="true">
+			<column name="id" type="integer" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="description" type="varchar(255)" />
 			<column name="url" type="varchar(40)" />
 			<column name="type" type="varchar(40)" />
 		</createTable>
-<!--  устройства в системе -->
+		<!-- устройства в системе -->
 		<createTable tableName="device">
-			<column name="id" type="tinyint(255)" autoIncrement="true">
+			<column name="id" type="bigint" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="dev_name" type="varchar(255)" />
-			<column name="type_id" type="tinyint(255)" />
+			<column name="type_id" type="integer" />
 			<column name="IP" type="varchar(255)" />
 			<column name="port" type="SMALLINT" />
 			<column name="addr" type="tinyint(255)" />
 		</createTable>
-<!--перечень данных, которые нужно собирать с указанием границ и единиц-->
+		<!--перечень данных, которые нужно собирать с указанием границ и единиц -->
 		<createTable tableName="value">
 			<column name="id" type="integer" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="name" type="varchar(50)" />
-			<column name="value" type="float" />
-			<column name="amount" type="tinyint(255)" />
-			<column name="device_id" type="tinyint(255)" />
+<!-- 			<column name="value" type="float" /> -->
+<!-- 			<column name="amount" type="tinyint(255)" /> -->
+			<column name="dev_id" type="bigint" />
 			<column name="units" type="varchar(10)" />
 			<column name="addr" type="varchar(40)" />
 			<column name="max" type="float" />
@@ -70,25 +70,26 @@
 			<column name="min_ms" type="integer" />
 			<column name="min_event_id" type="integer" />
 		</createTable>
-<!--события текстовки-->
-		<createTable tableName="event_text">
+		<!--события текстовки -->
+		<createTable tableName="type_events">
 			<column name="id" type="integer" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="text" type="varchar(255)" />
+			<column name="event_name" type="varchar(255)" />
 		</createTable>
-<!--лог событий-->
+		<!--лог событий -->
 		<createTable tableName="event">
 			<column name="id" type="integer" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="date" type="datetime(6)" />
+			<column name="date_time" type="datetime(6)" />
+			<column name="ch_date" type="datetime(6)" />
 			<column name="event_id" type="integer" />
-			<column name="value_id" type="integer" />
-			<column name="device_id" type="tinyint(255)" />
+			<!-- <column name="value_id" type="integer" /> -->
+			<column name="dev_id" type="bigint" />
 			<column name="user_id" type="bigint" />
 		</createTable>
-<!--coming soon предстоит продумать лог данных, графики и быстрые графики-->
+		<!--coming soon предстоит продумать лог данных, графики и быстрые графики -->
 	</changeSet>
 
 </databaseChangeLog>                

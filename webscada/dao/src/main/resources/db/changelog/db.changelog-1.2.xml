@@ -31,9 +31,10 @@
 			<column name="id" value="13" />
 			<column name="login" value="Roma" />
 			<column name="password"
-				value="$2a$10$pj6UGr/aPbTq.ZwD.LX7geKgcW7BYQSy5FDk05TWarH.Bf31RDVpa" />
+				value="$2a$10$DRK1.kPrvPkTAD6q6Fgwm.Jm2EZR8EIrUl1ZisJ9aHCCc9khZBIpi" />
 			<column name="info" value="developer of this ВУНДНРВАФЛЯ" />
 			<column name="email" value="andromanko@gmail.com" />
+			<column name="enabled" value="1" />
 		</insert>
 		<insert tableName="user_role">
 			<column name="user_id" value="13" />
@@ -41,8 +42,8 @@
 		</insert>
 		<insert tableName="dev_type">
 			<column name="id" value="1" />
-			<column name="description" value="FX5U PLC" />
-			<column name="type" value="FX5U-32-MR/DS" />
+			<column name="description" value="modbus tcp" />
+			<column name="type" value="standart" />
 		</insert>
 		<insert tableName="device">
 			<column name="id" value="1" />
@@ -51,6 +52,34 @@
 			<column name="type_id" value="1" />
 			<column name="IP" value="128.65.22.153" />
 			<column name="port" value="502" />
+			<column name="addr" value="0" />
+		</insert>
+		<insert tableName="dev_type">
+			<column name="id" value="2" />
+			<column name="description" value="FX5U PLC" />
+			<column name="type" value="FX5U standart" />
+		</insert>
+		<insert tableName="device">
+			<column name="id" value="2" />
+			<column name="dev_name"
+				value="контроллер КНС подкачки г. Мозырь" />
+			<column name="type_id" value="1" />
+			<column name="IP" value="128.65.22.51" />
+			<column name="port" value="502" />
+			<column name="addr" value="0" />
+		</insert>
+				<insert tableName="dev_type">
+			<column name="id" value="3" />
+			<column name="description" value="web" />
+			<column name="type" value="blockchain.info" />
+		</insert>
+		<insert tableName="device">
+			<column name="id" value="3" />
+			<column name="dev_name"
+				value="данные с blockchain TEST" />
+			<column name="type_id" value="1" />
+			<column name="IP" value="104.16.40.77" />
+			<column name="port" value="8080" />
 			<column name="addr" value="0" />
 		</insert>
 	</changeSet>

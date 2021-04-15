@@ -9,13 +9,13 @@
 <body>
 
 	<div>
-		<h1 th:text="${title}"> </h1>
+		<h1 th:text="${title}"></h1>
 	</div>
 	<div class="user-wrapper">
 		<div th:each="oneuser : ${usersList}" class="user-div">
 			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
 			<p th:text="'User name is: ' + ${oneuser.login}" />
-			<p th:text="'User e-mail is: ' + ${oneuser.email}" />
+			
 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a>
 		</div>
 	</div>
@@ -24,28 +24,32 @@
 		user names</button>
 	<!-- th:attr="data-target='#activeModal' + ${user.id}">Show user names  -->
 
-	<div id="activeModal" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h6 class="modal-title">Users names:</h6>
+	id="activeModal" class="modal fade" role="dialog">
+	<div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h6 class="modal-title">Users names:</h6>
+			</div>
+			<div class="modal-body">
+
+				<div th:each="oneuser : ${usersList}">
+					<p th:text="'User: ' + ${oneuser.login}" />
+					<p th:text="'User e-mail is: ' + ${oneuser.email}" />
+					<p th:text="'Enabled?  ' + ${oneuser.enabled}" />
 				</div>
-				<div class="modal-body">
 
-					<div th:each="oneuser : ${usersList}">
-						<p th:text="'User: ' + ${oneuser.login}" />
-					</div>
+				<button type="button" class="btn btn-danger btn-sm"
+					data-bs-dismiss="modal">Close</button>
 
-					<button type="button" class="btn btn-danger btn-sm"
-						data-bs-dismiss="modal">Close</button>
-
-				</div>
 			</div>
 		</div>
 	</div>
-	
-	<a href="/users/add"> uSER ADD</a>
-	<a href="/users/upd"> update</a>
-	
+	</div>
+
+	<a href="/users/add"> uSER ADD </a>
+	<a href="/users/upd"> update </a>
+	<div>
+		<a href="/"> Main page </a>
+	</div>
 </body>
 </html>

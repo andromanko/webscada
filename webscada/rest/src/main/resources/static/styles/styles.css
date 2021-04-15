@@ -8,6 +8,16 @@
 	flex-wrap: wrap;
 }
 
+.user-description {
+	width: 800px;
+	height: 500px;
+	border:	1px solid black;
+	display: flex;
+	align-items: left;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
 .user-div {
 	border:	1px solid red;
 	width: 200px;

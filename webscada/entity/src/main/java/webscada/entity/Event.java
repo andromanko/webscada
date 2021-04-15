@@ -24,7 +24,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder 
 @Entity
-@Table(name="events")
+@Table(name="event")
 public class Event extends AEntity<Integer> {
 	
 	@Column(name="dateTime")//время события

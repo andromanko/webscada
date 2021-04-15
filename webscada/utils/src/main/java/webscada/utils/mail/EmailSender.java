@@ -38,7 +38,7 @@ public class EmailSender implements IEmailSender {
         		.append(statusValue).append(" the User.")
                 .toString();
         //TODO - вставить мыло ющера - правильно ли я его вставил - хз )
-        configureMimeMessageHelper(helper, ADMIN_EMAIL_ADDRESS, dto.getEmail(), text, subjext);
+        configureMimeMessageHelper(helper, dto.getEmail(), ADMIN_EMAIL_ADDRESS,  text, subjext);
         
         mailSender.send(message);
     }
@@ -50,7 +50,7 @@ public class EmailSender implements IEmailSender {
         MimeMessageHelper helper = new MimeMessageHelper(message);
         UserDto userDto = UserMapper.mapUserDto(user);
         String text = prepareStatusChangingMailText(userDto, status);
-        configureMimeMessageHelper(helper, ADMIN_EMAIL_ADDRESS, ADMIN_EMAIL_ADDRESS, text,
+        configureMimeMessageHelper(helper, ADMIN_EMAIL_ADDRESS, userDto.getEmail(), text,
                 "User status change in HTPVacancy System");
         mailSender.send(message);
     }

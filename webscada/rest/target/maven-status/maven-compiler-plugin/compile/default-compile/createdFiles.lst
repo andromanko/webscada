@@ -1,0 +1,10 @@
+webscada\rest\controllers\DevController.class
+webscada\rest\controllers\MainController.class
+webscada\rest\controllers\DataController.class
+webscada\rest\controllers\SignupController.class
+webscada\rest\utils\FbokMapper.class
+webscada\rest\controllers\UserController.class
+webscada\rest\utils\FacebookConnectionSignUp.class
+webscada\rest\utils\CustomAccessDeniedHandler.class
+webscada\rest\utils\FacebookSignInAdapter.class
+webscada\rest\config\SecurityConfiguration.class

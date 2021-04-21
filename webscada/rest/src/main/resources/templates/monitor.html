@@ -12,11 +12,12 @@
 		<h1 th:text="${title}" />
 	</div>
 	<div class="user-wrapper">
-		<div th:each="oneuser : ${usersList}" class="user-div">
+		<div th:each="onevalue : ${dataList}" class="user-div">
 			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
-			<p th:text="'User name is: ' + ${oneuser.login}" />
-			<p th:text="'User e-mail is: ' + ${oneuser.email}" />
-			<a th:href="@{'users/' + ${oneuser.id}}">More info</a>
+			<p th:text="'value name' + ${onevalue.dataName} " />
+			<p th:text="'Value: ' + ${onevalue.value}" />
+			<p th:text="'Unit: ' + ${onevalue.dataUnit}" />
+<!-- 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a> -->
 		</div>
 	</div>
 	<button type="button" class="btn btn-info btn-sm"

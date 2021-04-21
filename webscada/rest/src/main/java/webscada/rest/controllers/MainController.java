@@ -56,10 +56,10 @@ public class MainController {
 //        return "devices";
 //    }
     
-    @GetMapping("/monitor")
-    public String monitor() {
-        return "monitor";
-    }
+//    @GetMapping("/monitor")
+//    public String monitor() {
+//        return "monitor";
+//    }
     
     @GetMapping("/anonymous")
     public String anonymous() {

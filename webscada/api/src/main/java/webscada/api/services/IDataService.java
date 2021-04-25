@@ -12,6 +12,8 @@ import webscada.api.dto.DevDto;
 @Service
 public interface IDataService {
 
+	
+	
     DataDto readData(DevDto devDto);
     
     boolean writeData(DataDto dataDto, DevDto devDto);

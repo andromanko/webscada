@@ -44,5 +44,12 @@
 		<!-- <artifactId>lombok</artifactId> -->
 		<!-- <optional>true</optional> -->
 		<!-- </dependency> -->
+		<!-- https://mvnrepository.com/artifact/com.digitalpetri.modbus/modbus-master-tcp -->
+		<dependency>
+			<groupId>com.digitalpetri.modbus</groupId>
+			<artifactId>modbus-master-tcp</artifactId>
+			<version>1.2.0</version>
+		</dependency>
+
 	</dependencies>
 </project>

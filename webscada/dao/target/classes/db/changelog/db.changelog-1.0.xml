@@ -7,6 +7,13 @@
 	<changeSet id="changelog-1.0" author="roma"
 		objectQuotingStrategy="LEGACY">
 		<!--СТАНДАРТ юзвери -->
+
+		<preConditions onFail="WARN">
+			<not>
+				<tableExists tableName="user" />
+			</not>
+		</preConditions>
+
 		<createTable tableName="user">
 			<column name="id" type="bigint" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
@@ -58,8 +65,8 @@
 				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="name" type="varchar(50)" />
-<!-- 			<column name="value" type="float" /> -->
-<!-- 			<column name="amount" type="tinyint(255)" /> -->
+			<!-- <column name="value" type="float" /> -->
+			<!-- <column name="amount" type="tinyint(255)" /> -->
 			<column name="dev_id" type="bigint" />
 			<column name="units" type="varchar(10)" />
 			<column name="addr" type="varchar(40)" />

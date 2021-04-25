@@ -1,0 +1,36 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Device page</title>
+<link href="../styles/styles.css" rel="stylesheet" />
+<!-- 
+<link href="css/bootstrap.min.css" rel="stylesheet" />
+ -->
+</head>
+<body>
+
+	<div>
+		<h1 th:text = "${dev.devName} + '\'s personal page'" ></h1>
+	</div>
+	<div class = "user-wrapper">
+		<div class = "user-div">
+			<p th:text="'Dev id is: ' + ${dev.id}" />
+			<p th:text="'Dev IP is: ' + ${dev.IP}" />
+			<p th:text="'Dev port is: ' + ${dev.port}" />
+<!-- 			<img th:src = "@{'../images/' + ${user.login} + '.jpg'}" /> -->
+		</div>
+	</div>
+		<div>
+		<a href="/users">User Control for admin</a>
+	</div>
+	<div>
+		<a href="/devices">Devices for engineer</a>
+	</div>
+	<div>
+		<a href="/monitor">monitoring for viewer</a>
+	</div>
+		<div>
+		<a href="/logout">LOGOUT Nach!</a>
+	</div>
+	
+</body>
+</html>

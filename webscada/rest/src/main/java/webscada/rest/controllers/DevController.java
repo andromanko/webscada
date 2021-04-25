@@ -47,7 +47,7 @@ public class DevController {
 	public ModelAndView findDev(@PathVariable long id) {
 		DevDto dev = devService.findDev(id);
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("devPage");
+		modelAndView.setViewName("devicePage");
 		modelAndView.addObject("dev", dev);
 		return modelAndView;
 	}

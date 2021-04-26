@@ -32,4 +32,12 @@ public class TypesEvents extends AEntity<Integer> {
       
     @OneToMany(mappedBy = "event_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Event> devs;
+
+    
+    @OneToMany(mappedBy = "max_event_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<Value> valuesMax;
+    //TODO уточнить объединение? min/max event id
+    @OneToMany(mappedBy = "min_event_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<Value> valuesMin;
+
 }

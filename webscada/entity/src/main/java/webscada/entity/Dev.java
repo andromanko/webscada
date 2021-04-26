@@ -46,6 +46,9 @@ public class Dev extends AEntity<Long> {
     
     @OneToMany(mappedBy = "dev_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<Event> events;
+    
+    @OneToMany(mappedBy = "dev_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<Value> values;
 //	
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "user_id", referencedColumnName = "id")

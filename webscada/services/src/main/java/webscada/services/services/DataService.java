@@ -32,6 +32,12 @@ import webscada.api.services.IDevService;
 import webscada.entity.Dev;
 import webscada.entity.DevType;
 
+import org.apache.plc4x.java.PlcDriverManager;
+import org.apache.plc4x.java.api.PlcConnection;
+import org.apache.plc4x.java.api.messages.PlcReadRequest;
+import org.apache.plc4x.java.api.messages.PlcReadResponse;
+import org.apache.plc4x.java.api.types.PlcResponseCode;
+
 @Slf4j
 @Service
 public class DataService implements IDataService {
@@ -86,36 +92,72 @@ public class DataService implements IDataService {
 	//}
 
 	// TODO коннекшн всех устройтсв закрыть
-
+//TODO убрать эту безымянную гадость!
+	
+	int i; //
 	public DataDto readData(DevDto devDto) {
 		// вытащить всё что читаем из Dev
 		// пробежаться for each
 		// читать каждую переменную
 		//устанавливаем коннект если коннекта нет
 		DevDto device = devService.findDev(1);
-		ModbusTcpMasterConfig config = new ModbusTcpMasterConfig.Builder(device.getIP()).setPort(device.getPort())
-				.build();
-		ModbusTcpMaster master = new ModbusTcpMaster(config);
-		master.connect();
-		
-		//конец установления коннекта
-		CompletableFuture<ReadHoldingRegistersResponse> future =
-	            master.sendRequest(new ReadHoldingRegistersRequest(0, 10), 0);
-
-	        future.whenCompleteAsync((response, ex) -> {
-	            if (response != null) {
-	                ReferenceCountUtil.release(response);
-	            } else {
-	                log.error("Completed exceptionally, message={}", ex.getMessage(), ex);
-	            }
-	//            scheduler.schedule(() -> sendAndReceive(master), 1, TimeUnit.SECONDS);
-	        }, Modbus.sharedExecutor());
+//		ModbusTcpMasterConfig config = new ModbusTcpMasterConfig.Builder(device.getIP()).setPort(device.getPort())
+//				.build();
+//		ModbusTcpMaster master = new ModbusTcpMaster(config);
+//		master.connect();
+//		
+//		//конец установления коннекта
+//		CompletableFuture<ReadHoldingRegistersResponse> future =
+//	            master.sendRequest(new ReadHoldingRegistersRequest(0, 10), 0);
+//
+//	        future.whenCompleteAsync((response, ex) -> {
+//	            if (response != null) {
+//	                ReferenceCountUtil.release(response);
+//	            } else {
+//	                log.error("Completed exceptionally, message={}", ex.getMessage(), ex);
+//	            }
+//	//            scheduler.schedule(() -> sendAndReceive(master), 1, TimeUnit.SECONDS);
+//	        }, Modbus.sharedExecutor());
 		// а для начала - считаем одну переменную!
+		
+		// Establish a connection to the plc using the url provided as first argument
+        try (PlcConnection plcConnection = new PlcDriverManager().getConnection("modbus:tcp://"+device.getIP()+":"+device.getPort())) {
+            // Check if this connection support reading of data.
+            if (!plcConnection.getMetadata().canRead()) {
+                log.error("This connection doesn't support reading.");
+                return null;
+            }
+         // Create a new read request:
+            // - Give the single item requested the alias name "value"
+            PlcReadRequest.Builder builder = plcConnection.readRequestBuilder();
+            //for (int i = 0; i < options.getFieldAddress().length; i++) {
+                builder.addItem("value-" + 1, "400020:UINT[10]");
+                builder.addItem("value-" + 2, "400001:UINT[10]");
+            //}
+            PlcReadRequest readRequest = builder.build();
+            
+//////////////////////////////////////////////////////////
+// Read synchronously ...
+// NOTICE: the ".get()" immediately lets this thread pause until
+// the response is processed and available.
+log.info("Synchronous request ...");
+PlcReadResponse syncResponse = readRequest.execute().get();
+// Simply iterating over the field names returned in the response.
+i=syncResponse.getInteger("value-1");
+        
+        
+        
+        
+        }
+        catch(Exception e) {
+        	  log.error("connEtction error");
+        	}
+        
 		DataDto dataDto = new DataDto();
 		dataDto.setDataName("dataName");
 		dataDto.setDataUnit("мегапаскалейТЕСТ!");
 		dataDto.setId(1);
-		int data = 1;
+		int data = i;
 		dataDto.setValue(data);
 
 		return dataDto;

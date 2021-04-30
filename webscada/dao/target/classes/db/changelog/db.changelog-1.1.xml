@@ -36,7 +36,7 @@
 		<addForeignKeyConstraint
 			baseColumnNames="event_id" baseTableName="event"
 			constraintName="fk_event_id" referencedColumnNames="id"
-			referencedTableName="type_events" />
+			referencedTableName="type_event" />
 		<!-- events user -->
 		<addForeignKeyConstraint
 			baseColumnNames="user_id" baseTableName="event"
@@ -46,11 +46,11 @@
 		<addForeignKeyConstraint
 			baseColumnNames="max_event_id" baseTableName="value"
 			constraintName="fk_event_valmax_id" referencedColumnNames="id"
-			referencedTableName="type_events" />
+			referencedTableName="type_event" />
 		<!-- events id min -->
 		<addForeignKeyConstraint
 			baseColumnNames="min_event_id" baseTableName="value"
 			constraintName="fk_event_valmin_id" referencedColumnNames="id"
-			referencedTableName="type_events" />
+			referencedTableName="type_event" />
 	</changeSet>
 </databaseChangeLog>

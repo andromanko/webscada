@@ -23,8 +23,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "type_events")											
-public class TypesEvents extends AEntity<Integer> {
+@Table(name = "type_event")											
+public class TypeEvent extends AEntity<Integer> {
 
     @Column(name = "event_name")
     private String event_name;
@@ -34,10 +34,10 @@ public class TypesEvents extends AEntity<Integer> {
     private List<Event> devs;
 
     
-    @OneToMany(mappedBy = "max_event_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Value> valuesMax;
-    //TODO уточнить объединение? min/max event id
-    @OneToMany(mappedBy = "min_event_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Value> valuesMin;
+    @OneToMany(mappedBy = "maxEventId", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<Value> maxValues;
+    
+    @OneToMany(mappedBy = "minEventId", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private List<Value> minValues;
 
 }

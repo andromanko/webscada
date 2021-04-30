@@ -15,6 +15,7 @@ public class UserMapper {
                 .id(source.getId())
                 .login(source.getLogin())
                 .email(source.getEmail())
+                .info(source.getInfo())
                 .password(source.getPassword())
                 .enabled(source.isEnabled())
                 .build();
@@ -26,6 +27,7 @@ public class UserMapper {
                 .login(source.getLogin())
                 .email(source.getEmail())
                 .password(source.getPassword())
+                .info(source.getInfo())
                 .enabled(source.isEnabled())
                 .build();
     }

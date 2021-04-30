@@ -52,7 +52,7 @@ public class Value extends AEntity<Long> {
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "max_event_id", referencedColumnName = "id")
-    private TypesEvents maxEventId;
+    private TypeEvent maxEventId;
  
     @Column(name = "min")
     private float min;  
@@ -62,5 +62,5 @@ public class Value extends AEntity<Long> {
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "min_event_id", referencedColumnName = "id")
-    private TypesEvents minEventId;
+    private TypeEvent minEventId;
 }

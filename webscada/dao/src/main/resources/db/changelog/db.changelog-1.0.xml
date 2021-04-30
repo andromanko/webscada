@@ -61,7 +61,7 @@
 		</createTable>
 		<!--перечень данных, которые нужно собирать с указанием границ и единиц -->
 		<createTable tableName="value">
-			<column name="id" type="integer" autoIncrement="true">
+			<column name="id" type="bigint" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
 			<column name="name" type="varchar(50)" />
@@ -78,7 +78,7 @@
 			<column name="min_event_id" type="integer" />
 		</createTable>
 		<!--события текстовки -->
-		<createTable tableName="type_events">
+		<createTable tableName="type_event">
 			<column name="id" type="integer" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>

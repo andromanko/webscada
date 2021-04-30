@@ -34,7 +34,7 @@
 				value="$2a$10$DRK1.kPrvPkTAD6q6Fgwm.Jm2EZR8EIrUl1ZisJ9aHCCc9khZBIpi" />
 			<column name="info" value="developer of this ВУНДНРВАФЛЯ" />
 			<column name="email" value="andromanko@gmail.com" />
-<!-- 			<column name="enabled" value="TRUE" /> -->
+			<!-- <column name="enabled" value="TRUE" /> -->
 		</insert>
 		<insert tableName="user_role">
 			<column name="user_id" value="13" />
@@ -64,24 +64,62 @@
 			<column name="dev_name"
 				value="контроллер КНС подкачки г. Мозырь" />
 			<column name="type_id" value="1" />
-			<column name="IP" value="128.65.22.51" />
+			<column name="IP" value="128.65.22.153" />
 			<column name="port" value="502" />
 			<column name="addr" value="0" />
 		</insert>
-				<insert tableName="dev_type">
+		<insert tableName="dev_type">
 			<column name="id" value="3" />
 			<column name="description" value="web" />
 			<column name="type" value="blockchain.info" />
 		</insert>
 		<insert tableName="device">
 			<column name="id" value="3" />
-			<column name="dev_name"
-				value="данные с blockchain TEST" />
+			<column name="dev_name" value="данные с blockchain TEST" />
 			<column name="type_id" value="1" />
 			<column name="IP" value="104.16.40.77" />
 			<column name="port" value="8080" />
 			<column name="addr" value="0" />
 		</insert>
+
+		<insert tableName="type_event">
+			<column name="id" value="1" />
+			<column name="event_name" value="превышение давления" />
+		</insert>
+		<insert tableName="type_event">
+			<column name="id" value="2" />
+			<column name="event_name" value="снижение давления" />
+		</insert>
+
+		<insert tableName="value">
+			<column name="id" value="1" />
+			<column name="name" value="давление в сети" />
+			<column name="units" value="МПа" />
+			<column name="dev_id" value="1" />
+			<column name="addr" value="42080" />
+			<column name="max" value="0.32" />
+			<column name="max_ms" value="100" />
+			<column name="max_event_id" value="1" />
+			<column name="min" value="0.25" />
+			<column name="min_ms" value="100000" />
+			<column name="min_event_id" value="2" />
+		</insert>
+
+		<insert tableName="value">
+			<column name="id" value="2" />
+			<column name="name" value="давление в сети" />
+			<column name="units" value="МПа" />
+			<column name="dev_id" value="2" />
+			<column name="addr" value="42081" />
+			<column name="max" value="0.32" />
+			<column name="max_ms" value="100" />
+			<column name="max_event_id" value="1" />
+			<column name="min" value="0.25" />
+			<column name="min_ms" value="100000" />
+			<column name="min_event_id" value="2" />
+		</insert>
+
+
 	</changeSet>
 
 </databaseChangeLog>                

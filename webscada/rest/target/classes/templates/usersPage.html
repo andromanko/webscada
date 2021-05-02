@@ -11,6 +11,11 @@
 	<div>
 		<h1 th:text="${title}"></h1>
 	</div>
+	<a href="/users/add"> uSER ADD </a>
+	<a href="/users/upd"> update </a>
+	<div>
+		<a href="/"> Main page </a>
+	</div>
 	<div class="user-wrapper">
 		<div th:each="oneuser : ${usersList}" class="user-div">
 			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
@@ -24,7 +29,7 @@
 		user names</button>
 	<!-- th:attr="data-target='#activeModal' + ${user.id}">Show user names  -->
 
-	id="activeModal" class="modal fade" role="dialog">
+	<div id="activeModal" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-sm">
 		<div class="modal-content">
 			<div class="modal-header">
@@ -46,10 +51,6 @@
 	</div>
 	</div>
 
-	<a href="/users/add"> uSER ADD </a>
-	<a href="/users/upd"> update </a>
-	<div>
-		<a href="/"> Main page </a>
-	</div>
+	
 </body>
 </html>

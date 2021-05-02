@@ -10,6 +10,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.validator.constraints.pl.NIP;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,6 +34,8 @@ public class Dev extends AEntity<Long> {
 	@Column(name="DevName")
 	private String devName;
 	
+	
+	@Pattern(regexp = "^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$")
 	@Column(name="IP")
 	private String IP;
 	

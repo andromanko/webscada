@@ -13,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,12 +31,15 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "user")											
 public class User extends AEntity<Long> {
 
-    @Column(name = "login")
+    @NotNull
+	@Column(name = "login")
     private String login;
     
+    @NotNull
     @Column(name = "password")
     private String password;
     
+    @Email(message = "Email should be valid")
     @Column(name = "email")
     private String email;
     
@@ -42,7 +47,7 @@ public class User extends AEntity<Long> {
     private String info;    
     
     @Column(name = "enabled")
-    private boolean enabled;    
+    private boolean enabled;
     
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))

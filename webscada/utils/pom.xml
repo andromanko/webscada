@@ -51,6 +51,13 @@
 			<version>1.4.200</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit -->
+		<dependency>
+			<groupId>net.sourceforge.htmlunit</groupId>
+			<artifactId>htmlunit</artifactId>
+			<version>2.49.1</version>
+		</dependency>
+
 	</dependencies>
 
 </project>

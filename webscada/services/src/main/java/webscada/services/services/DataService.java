@@ -57,42 +57,8 @@ public class DataService implements IDataService {
 	// здесь будут данные о текущем состоянии устройств. Скооннекчен/не сконнекчен
 	// DevID и Bool
 	private Map<Long, Boolean> devState = new HashMap<>();
-
-	// здесь будут данные, считанные из устройств //ID данных, и само данное.ну,
-	// пока считаем данные целочисленными
 	// TODO сделать данные общими. Может быть Number?
 	private Map<Long, Number> currentData = new HashMap<>();
-
-	// коннекшн устройства открыть
-
-	// коннекшн устройства закрыть
-
-	// коннекшн всех устройств открыть
-	//@Scheduled(fixedRate = 30000)
-//	private void DevicesConnect() {
-
-		// List<DataDto> data = new LinkedList<DataDto>();
-
-		// получаем список устройств
-		// TODO сделать каждому устройству ENABLED
-///		List<DevDto> devices = devService.getDevs();
-//	//пробегаемся по кажодму устройству и устанавливаем коннект	 //если коннекта еще нет =)	
-		//for (DevDto device : devices) {
-			
-//			//TODO проверка на то, установлен ли уже коннект? 
-			
-//			//задаем новый конфиг
-			
-//			//коннектимся
-			 //как понять что мы сконнектились?
-			//devState.put(device.getId(), true);// типа сконнектились
-//			//логгмируем. пока нужно понять как знать установлен ли коннект
-			//log.debug(master.getLateResponseCounter().toString());
-		//}
-	//}
-
-	// TODO коннекшн всех устройтсв закрыть
-//TODO убрать эту безымянную гадость!
 	
 	int i; //
 	public DataDto readData(DevDto devDto) {
@@ -100,39 +66,27 @@ public class DataService implements IDataService {
 		// пробежаться for each
 		// читать каждую переменную
 		//устанавливаем коннект если коннекта нет
-		DevDto device = devService.findDev(1);
-//		ModbusTcpMasterConfig config = new ModbusTcpMasterConfig.Builder(device.getIP()).setPort(device.getPort())
-//				.build();
-//		ModbusTcpMaster master = new ModbusTcpMaster(config);
-//		master.connect();
-//		
-//		//конец установления коннекта
-//		CompletableFuture<ReadHoldingRegistersResponse> future =
-//	            master.sendRequest(new ReadHoldingRegistersRequest(0, 10), 0);
-//
-//	        future.whenCompleteAsync((response, ex) -> {
-//	            if (response != null) {
-//	                ReferenceCountUtil.release(response);
-//	            } else {
-//	                log.error("Completed exceptionally, message={}", ex.getMessage(), ex);
-//	            }
-//	//            scheduler.schedule(() -> sendAndReceive(master), 1, TimeUnit.SECONDS);
+		DevDto device = devService.findDev(devDto.getId());
 //	        }, Modbus.sharedExecutor());
 		// а для начала - считаем одну переменную!
 		
 		// Establish a connection to the plc using the url provided as first argument
         try (PlcConnection plcConnection = new PlcDriverManager().getConnection("modbus:tcp://"+device.getIP()+":"+device.getPort())) {
-            // Check if this connection support reading of data.
-            if (!plcConnection.getMetadata().canRead()) {
+	            // Check if this connection support reading of data.
+	            if (!plcConnection.getMetadata().canRead()) {
                 log.error("This connection doesn't support reading.");
                 return null;
             }
-         // Create a new read request:
+         
+            //TODO get выборка данных по определенному устройству
+           // List<Value> data = dataService. 
+            
+            // Create a new read request:
             // - Give the single item requested the alias name "value"
             PlcReadRequest.Builder builder = plcConnection.readRequestBuilder();
             //for (int i = 0; i < options.getFieldAddress().length; i++) {
-                builder.addItem("value-" + 1, "400020:UINT[10]");
-                builder.addItem("value-" + 2, "400001:UINT[10]");
+                builder.addItem("value-" + 1, "42080:UINT[10]");
+                //builder.addItem("value-" + 2, "400001:UINT[10]");
             //}
             PlcReadRequest readRequest = builder.build();
             
@@ -144,16 +98,12 @@ log.info("Synchronous request ...");
 PlcReadResponse syncResponse = readRequest.execute().get();
 // Simply iterating over the field names returned in the response.
 i=syncResponse.getInteger("value-1");
-        
-        
-        
-        
         }
         catch(Exception e) {
         	  log.error("connEtction error");
         	}
+        DataDto dataDto = new DataDto();
         
-		DataDto dataDto = new DataDto();
 		dataDto.setDataName("dataName");
 		dataDto.setDataUnit("мегапаскалейТЕСТ!");
 		dataDto.setId(1);

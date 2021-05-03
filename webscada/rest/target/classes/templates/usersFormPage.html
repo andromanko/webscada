@@ -11,9 +11,10 @@
 	</div>
 	<div class = "user-wrapper">
 		<form action="#" th:action="@{add}" th:object="${user}" class="form-control" method="post">
-			<input id="login" type="text" th:field="*{login}" class="form-control" required/>
-			<input id="password" type="text" th:field="*{password}" class="form-control" required/>
-			<input id="email" type="text" th:field="*{email}" class="form-control" required/>
+			<input id="login" name="login:" type="text" th:field="*{login}" class="form-control" required/>
+			<input id="password" name="password:" type="text" th:field="*{password}" class="form-control" required/>
+			<input id="email"name="e-mail:" type="text" th:field="*{email}" class="form-control" required/>
+			<input id="info"name="info:" type="text" th:field="*{info}" class="form-control"/>
 			<input type="submit" value="Submit" class = "btn btn-success"/>
 		</form>
 	</div>

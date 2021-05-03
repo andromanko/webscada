@@ -61,15 +61,24 @@ public class UserController {
 
 	@GetMapping(value = "/add")
 	public ModelAndView createUser() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("usersFormPage");
-		modelAndView.addObject("user", new UserDto());
+		ModelAndView modelAndView = new ModelAndView("usersFormPage");
+		UserDto userDto = new UserDto().builder()
+				.login("please enter Your login")
+				.email("please enter Your e-mail")
+				.info("please enter Your info")
+				.password("please enter Your password")
+				.build();
+		
+		modelAndView.addObject("user",  userDto);
 		return modelAndView;
 	}
 
 	@PostMapping(value = "/add")
-	public UserDto createUserSubmit(UserDto user) {
-		return this.userService.createUser(user);
+	public ModelAndView createUserSubmit(UserDto user) {
+		ModelAndView modelAndView = new ModelAndView("usersPage");
+		
+		modelAndView.addObject("user",  this.userService.createUser(user));
+		return modelAndView;
 	}
 
 	// ===============update=================
@@ -89,7 +98,7 @@ public class UserController {
 
 	// ================================
 
-	@DeleteMapping(value = "/{id}")
+	@DPostMapping(value = "/del/{id}")
 	public void deleteUser(@PathVariable int id) {
 		this.userService.deleteUser(id);
 	}

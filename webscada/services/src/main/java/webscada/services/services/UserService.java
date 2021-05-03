@@ -34,8 +34,8 @@ public class UserService implements IUserService {
 	private IUserJPADao userJPADao;
 	@Autowired
 	private IRoleJPADao roleJPADao;
-    @Autowired
-    private IEmailSender emailSender;
+	@Autowired
+	private IEmailSender emailSender;
 //
 //    @Autowired
 //    private IPetJPADao petJPADao;
@@ -58,75 +58,76 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-    public UserDto createUser(UserDto userDto) {// throws Exception {
-        //проверка новоЮзера на ужеСуществующегоЮзера
-    	//слито от Авдейчика из одного из его видео =)
-    	//String newUser = userDto.getLogin();
-    	//String email = userDto.getEmail();
-    	//List<UserDto> existingUsers = getUsers();
-    	//дальше - см где throw
-    	
-    	User user = new User(); //вот! создали ЮЗЕРА
-        user.setLogin(userDto.getLogin());
-        user.setEmail(userDto.getEmail());
-        user.setEnabled(true);
-        User userByLogin=this.userJPADao.findByLogin(userDto.getLogin());
-        User userByEmail=this.userJPADao.findByEmail(userDto.getEmail());
-        if (((userByLogin)!=null) || ((userByEmail)!=null) )
-        {
-        	log.error("Failed to registerUser. The Login or Email already exists");
-        	//throw new UserAlreadyExistsException();
-        	return null;//моё художество. надо красивее
-        }
-        
-        
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-//        .add(new Role("VIEWER")); //если мы создаем роли - их у юзера быть не может. т.о. Set равен нулю! 
-        Role role=new Role();
-        role=roleJPADao.findByRoleName("ROLE_VIEWER");//находит!
-        HashSet<Role> roles = new HashSet<Role>();//null;//user.getRoles();
-        
-        roles.add(role);//где-то ошибся в синтаксисе?!
-        user.setRoles(roles);
-        User savedUser = this.userJPADao.save(user); //ЗАПИСАЛИ ЮЗЕРА
-        //TODO автовход. Регистрация нового фбукюзера сделана.
-        
-        UserDto registeredUser = UserMapper.mapUserDto(savedUser); 
-        
-        try {
-			emailSender.sendEmailToAdmin(registeredUser,1);
-			emailSender.sendEmailFromAdmin(savedUser,1);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			log.error("FFFailed to sent email");
+	public UserDto createUser(UserDto userDto) {// throws Exception {
+
+		User user = new User(); // вот! создали ЮЗЕРА
+		user.setLogin(userDto.getLogin());
+		user.setEmail(userDto.getEmail());
+		user.setEnabled(true);
+		User userByLogin = this.userJPADao.findByLogin(userDto.getLogin());
+		User userByEmail = this.userJPADao.findByEmail(userDto.getEmail());
+		if (((userByLogin) != null) || ((userByEmail) != null)) {
+			log.error("Failed to registerUser. The Login or Email already exists");
+			// TODO переделать! Если юзер или мэйл существует
+			return null;
 		}
-        
-        return registeredUser;
-    }
+
+		user.setPassword(passwordEncoder.encode(userDto.getPassword()));
+		Role role = new Role();
+		role = roleJPADao.findByRoleName("ROLE_VIEWER");
+		HashSet<Role> roles = new HashSet<Role>();
+
+		roles.add(role);
+		user.setRoles(roles);
+		try {
+			User savedUser = this.userJPADao.save(user); // ЗАПИСАЛИ ЮЗЕРА
+			// TODO автовход. Регистрация нового фбукюзера сделана.
+			UserDto registeredUser = UserMapper.mapUserDto(savedUser);
+
+			try {
+				emailSender.sendEmailToAdmin(registeredUser, 1);
+				emailSender.sendEmailFromAdmin(savedUser, 1);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				log.error("FFFailed to sent email");
+			}
+			return registeredUser;
+
+		} catch (Exception e) {
+			log.error("failed to create user:" + userDto.getLogin() + "; e-mail: " + userDto.getEmail(),
+					e.getMessage());
+			return null;
+		}
+	}
 
 	@Override
 	public void updateUser(String login, UserDto userDto, MultipartFile file) {
-//        User user = this.userJPADao.findById(id).orElse(null);
 		User user = this.userJPADao.findByLogin(login);
 		if (user != null) {
 			user.setLogin(userDto.getLogin());
 			user.setEmail(userDto.getEmail());
 			user.setEnabled(userDto.isEnabled());
-			this.userJPADao.save(user);
+
+			try {
+				this.userJPADao.save(user);
+			} catch (Exception e) {
+				log.error("failed to update user:" + userDto.getLogin() + "; e-mail: " + userDto.getEmail(),
+						e.getMessage());
+			}
 		}
 		try {
 			LogoFileUploader.updateOrCreateLogo(file, userDto);
 		} catch (IOException e) {
 			log.error("Failed to upload image. Error message: {}", e.getMessage());
 		}
-		
+
 		try {
-			emailSender.sendEmailFromAdmin(user,1);
+			emailSender.sendEmailFromAdmin(user, 1);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			log.error("FFFailed to sent email from upd");
 		}
-		
+
 	}
 
 	@Override
@@ -138,58 +139,4 @@ public class UserService implements IUserService {
 	public List<UserDto> getUsers() {
 		return UserMapper.mapUserDtos(userJPADao.findAll());
 	}
-
-//    @Override
-//    public void assingPetToUser(UserPetIdsDto ids) {
-//        User user = this.userJPADao.findById(ids.getUserId()).orElse(null);
-//        Pet pet = this.petJPADao.findById(ids.getPetId()).orElse(null);
-//        pet.setUser(user);
-//        this.petJPADao.save(pet);
-//        log.info("Pet assigned to user {}!", user.getUserName());
-//    }
-
-//    @Override
-//    public void getBookByIsbn(String isbn) {
-//        BookDetails details = this.webScraper.getBookDetailsFromWeb(isbn);
-//        String stop = "stop";
-//    }
-
-//    @Autowired
-//    private IUserDao userDao;
-//
-//    @Override
-//    public UserDto findUser(int id) {
-//        User user = this.userDao.get(id);
-//        return UserMapper.mapUserDto(user);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public UserDto createUser(UserDto user) {
-//        User entity = UserMapper.mapUser(user);
-//        entity.setPets(new ArrayList<>());
-//        User savedUser = this.userDao.create(entity);
-//        return UserMapper.mapUserDto(savedUser);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public void updateUser(int id, UserDto user) {
-//        User entity = this.userDao.get(id);
-//        entity.setFirstName(Optional.ofNullable(user.getFirstName()).orElse("DefaultName"));
-//        entity.setSalary(user.getSalary());
-//        this.userDao.update(entity);
-//    }
-//
-//    @Override
-//    @Transactional
-//    public void deleteUser(int id) {
-//        User entity = this.userDao.get(id);
-//        this.userDao.delete(entity);
-//    }
-//
-//    @Override
-//    public List<UserDto> getUsers() {
-//        return UserMapper.mapUserDtos(this.userDao.getAll());
-//    }
 }

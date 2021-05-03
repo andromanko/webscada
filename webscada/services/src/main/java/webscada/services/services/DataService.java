@@ -41,73 +41,63 @@ import org.apache.plc4x.java.api.types.PlcResponseCode;
 @Slf4j
 @Service
 public class DataService implements IDataService {
-	
+
 	private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-	// показывает СТАРТОВАЛО ЛИ ВООБЩЕ ПРИЛАГА? /ТАК БЫЛО В ПРИМЕРЕ. если не
-	// стартовало - то и читать не будем
+
 	private volatile boolean started = false;
 
 	@Autowired
 	private IDevService devService;
 
+//TODO  тут нужно сделать JPAdao - чтобы вытягивать инфо о данных которые нужно прочитать
 	@Autowired
-	private IDevJPADao devDao; // тут нужно сделать JPAdao - чтобы вытягивать инфо о данных которые нужно
-								// прочитать
+	private IDevJPADao devDao;
 
-	// здесь будут данные о текущем состоянии устройств. Скооннекчен/не сконнекчен
-	// DevID и Bool
+	// TODO здесь будут данные о текущем состоянии устройств. Скооннекчен/не
+	// сконнекчен DevID и Bool
 	private Map<Long, Boolean> devState = new HashMap<>();
+
 	// TODO сделать данные общими. Может быть Number?
 	private Map<Long, Number> currentData = new HashMap<>();
-	
-	int i; //
+
 	public DataDto readData(DevDto devDto) {
-		// вытащить всё что читаем из Dev
-		// пробежаться for each
-		// читать каждую переменную
-		//устанавливаем коннект если коннекта нет
-		DevDto device = devService.findDev(devDto.getId());
-//	        }, Modbus.sharedExecutor());
-		// а для начала - считаем одну переменную!
+
+		int data=-1;
 		
-		// Establish a connection to the plc using the url provided as first argument
-        try (PlcConnection plcConnection = new PlcDriverManager().getConnection("modbus:tcp://"+device.getIP()+":"+device.getPort())) {
-	            // Check if this connection support reading of data.
-	            if (!plcConnection.getMetadata().canRead()) {
-                log.error("This connection doesn't support reading.");
-                return null;
-            }
-         
-            //TODO get выборка данных по определенному устройству
-           // List<Value> data = dataService. 
-            
-            // Create a new read request:
-            // - Give the single item requested the alias name "value"
-            PlcReadRequest.Builder builder = plcConnection.readRequestBuilder();
-            //for (int i = 0; i < options.getFieldAddress().length; i++) {
-                builder.addItem("value-" + 1, "42080:UINT[10]");
-                //builder.addItem("value-" + 2, "400001:UINT[10]");
-            //}
-            PlcReadRequest readRequest = builder.build();
-            
+		DevDto device = devService.findDev(devDto.getId());
+//TODO после отладки убрать лишний String
+		String connection = "modbus:tcp://" + device.getIP() + ":" + device.getPort();
+		try (PlcConnection plcConnection = new PlcDriverManager()
+				.getConnection(connection) ) { //"modbus:tcp://128.65.22.51:502")) {
+			// Check if this connection support reading of data.
+			if (!plcConnection.getMetadata().canRead()) {
+				log.error("This connection doesn't support reading.");
+				return null;
+			}
+
+			PlcReadRequest.Builder builder = plcConnection.readRequestBuilder();
+			// for (int i = 0; i < options.getFieldAddress().length; i++) {
+			builder.addItem("value-" + 1, "40200:UINT[10]");
+			// }
+			PlcReadRequest readRequest = builder.build();
+
 //////////////////////////////////////////////////////////
 // Read synchronously ...
 // NOTICE: the ".get()" immediately lets this thread pause until
 // the response is processed and available.
-log.info("Synchronous request ...");
-PlcReadResponse syncResponse = readRequest.execute().get();
+			log.info("Synchronous request ...");
+			PlcReadResponse syncResponse = readRequest.execute().get();
 // Simply iterating over the field names returned in the response.
-i=syncResponse.getInteger("value-1");
-        }
-        catch(Exception e) {
-        	  log.error("connEtction error");
-        	}
-        DataDto dataDto = new DataDto();
-        
+			data = syncResponse.getInteger("value-1");
+		} catch (Exception e) {
+			log.error("connEtction error");
+		
+		}
+		DataDto dataDto = new DataDto();
+
 		dataDto.setDataName("dataName");
 		dataDto.setDataUnit("мегапаскалейТЕСТ!");
 		dataDto.setId(1);
-		int data = i;
 		dataDto.setValue(data);
 
 		return dataDto;
@@ -115,26 +105,19 @@ i=syncResponse.getInteger("value-1");
 
 	@Override
 	public boolean writeData(DataDto dataDto, DevDto devDto) {
-		// TODO Auto-generated method stub
+		// TODO writeData
 		return false;
 	}
 
-	// прочитать данные со всех устройств
 	@Override
 	public List<DataDto> readAllData(List<DevDto> devices) {
 
-		//if (!started) DevicesConnect();
-			//return null;
-		// получаем список всех устройств
-		// List<Dev> devices = devDao.findAll();
 		List<DataDto> data = new LinkedList<DataDto>();
-		// пробегаемся по списку и из каждого устройства читаем данные
-		for (DevDto device : devices) {
-			//if (devState.get(device.getId())) {
-				DataDto dataDto = readData(device);
-				data.add(dataDto);
-			//}
 
+		for (DevDto device : devices) {
+			//if (device.isEnabled())
+			DataDto dataDto = readData(device);
+			data.add(dataDto);
 		}
 		return data;
 	}

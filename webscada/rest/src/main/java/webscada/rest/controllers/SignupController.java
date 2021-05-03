@@ -31,9 +31,6 @@ public class SignupController {
     @Autowired
     AuthenticationManager authenticationManager;
     
-//    @Autowired
-//    Principal principal;
-    
     @GetMapping
     public String signupUser(Model model) {
         model.addAttribute("dto", new UserDto());
@@ -45,7 +42,7 @@ public class SignupController {
         try {
             model.addAttribute("dto", dto);
             UserDto dtoNew = userService.createUser(dto); //внутри мы "новенькому" присавиваем роль VIEWER
-            UserDto newUser = userService.findUser(dtoNew.getId());
+            //UserDto newUser = userService.findUser(dtoNew.getId());
             //здесь пробуем войти новоприбывшим юзером
             authWithAuthManager(request, dto.getLogin(), dto.getPassword());
         } catch (Exception e) {
@@ -54,8 +51,7 @@ public class SignupController {
         }
         return "signupResult";
     }
-    
-    //TODO
+
     private void authWithAuthManager(HttpServletRequest request, String username, String password) {
         
         UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);

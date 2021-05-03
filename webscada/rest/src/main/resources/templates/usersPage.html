@@ -22,6 +22,8 @@
 			<p th:text="'User name is: ' + ${oneuser.login}" />
 			
 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a>
+			<button type="button" class="btn btn-info btn-sm"  method="post"> DeleteUser</button>
+			
 		</div>
 	</div>
 	<button type="button" class="btn btn-info btn-sm"

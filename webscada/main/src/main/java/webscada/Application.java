@@ -16,11 +16,6 @@ public class Application {
     private ApplicationContext appContext;
     
 	public static void main(String[] args) {
-//		ClassLoader cl=ClassLoader.getSystemClassLoader();
-//		URL[] urls=((URLClassLoader)cl).getURLs();
-//		Arrays.stream(urls)
-//			.filter(u-> !u.getFile().contains(".jar"))
-//			.forEach(u->System.out.println(u.getPath()));
 
 		SpringApplication.run(Application.class, args);
 		System.out.println("webScada Started!!!");

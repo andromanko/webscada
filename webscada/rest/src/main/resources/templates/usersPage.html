@@ -20,10 +20,16 @@
 		<div th:each="oneuser : ${usersList}" class="user-div">
 			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
 			<p th:text="'User name is: ' + ${oneuser.login}" />
-			
+
 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a>
-			<button type="button" class="btn btn-info btn-sm"  method="post"> DeleteUser</button>
-			
+
+			<form action="/users/del" th:object="${oneuser}" method="post">
+				
+				<p class="card-text" th:text="${oneuser.id}" />
+				<input type="hidden" value="${oneuser.id}">
+				<button type="submit">Удалить</button>
+			</form>
+
 		</div>
 	</div>
 	<button type="button" class="btn btn-info btn-sm"
@@ -32,27 +38,27 @@
 	<!-- th:attr="data-target='#activeModal' + ${user.id}">Show user names  -->
 
 	<div id="activeModal" class="modal fade" role="dialog">
-	<div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h6 class="modal-title">Users names:</h6>
-			</div>
-			<div class="modal-body">
-
-				<div th:each="oneuser : ${usersList}">
-					<p th:text="'User: ' + ${oneuser.login}" />
-					<p th:text="'User e-mail is: ' + ${oneuser.email}" />
-					<p th:text="'Enabled?  ' + ${oneuser.enabled}" />
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="modal-title">Users names:</h6>
 				</div>
+				<div class="modal-body">
 
-				<button type="button" class="btn btn-danger btn-sm"
-					data-bs-dismiss="modal">Close</button>
+					<div th:each="oneuser : ${usersList}">
+						<p th:text="'User: ' + ${oneuser.login}" />
+						<p th:text="'User e-mail is: ' + ${oneuser.email}" />
+						<p th:text="'Enabled?  ' + ${oneuser.enabled}" />
+					</div>
 
+					<button type="button" class="btn btn-danger btn-sm"
+						data-bs-dismiss="modal">Close</button>
+
+				</div>
 			</div>
 		</div>
 	</div>
-	</div>
 
-	
+
 </body>
 </html>

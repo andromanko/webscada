@@ -62,7 +62,8 @@ public class UserController {
 	@GetMapping(value = "/add")
 	public ModelAndView createUser() {
 		ModelAndView modelAndView = new ModelAndView("usersFormPage");
-		UserDto userDto = new UserDto().builder()
+		new UserDto();
+		UserDto userDto = UserDto.builder()
 				.login("please enter Your login")
 				.email("please enter Your e-mail")
 				.info("please enter Your info")
@@ -97,21 +98,9 @@ public class UserController {
     }
 
 	// ================================
-
-	@DPostMapping(value = "/del/{id}")
-	public void deleteUser(@PathVariable int id) {
-		this.userService.deleteUser(id);
+//TODO куда метод будет вываливаться? нужен редирект?
+	@PostMapping(value = "/del")   
+	public void deleteUser(UserDto user) {
+		this.userService.deleteUser(user.getId());
 	}
-
-//	@PatchMapping()
-//	public void assingPetToUser(@RequestBody UserPetIdsDto ids) {
-//		this.userService.assingPetToUser(ids);
-//	}
-
-//	@GetMapping("/book")
-//	public ModelAndView search(@RequestParam(value = "isbn", required = false) String isbn) {
-//		ModelAndView modelAndView = new ModelAndView();
-//		userService.getBookByIsbn(isbn);
-//		return modelAndView;
-//	}
 }

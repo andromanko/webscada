@@ -42,7 +42,7 @@ public class DataController {
 	public ModelAndView viewData() {
 		List<DataDto> data = new LinkedList<DataDto>();
 		List<DevDto> devices=devService.getDevs();
-				data = dataService.readAllData(devices);
+				//data = dataService.readAllData(devices);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("monitor");
 		modelAndView.addObject("title", "Data");

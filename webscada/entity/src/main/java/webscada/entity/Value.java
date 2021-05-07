@@ -32,14 +32,14 @@ public class Value extends AEntity<Long> {
 
     @Column(name = "name")
     private String name;
-      
+      //TODO !!!NAMEING CONVENSION!!!
     //TODO сделать через enum ИЛИ прикрутить еще одну таблицу с возможными вариантами единиц измерений
     @Column(name = "units")
     private String units;    
     
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dev_id", referencedColumnName = "id")
-    private Dev dev_id;
+    private Dev devId;
     
     @Column(name = "addr")
     private String addr;  

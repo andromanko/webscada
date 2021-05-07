@@ -1,8 +1,11 @@
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dto\DevTypeDto.java
+D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IValueJPADao.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\utils\IDevComm.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\services\IUserService.java
+D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\mappers\ValueMapper.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\services\IDevService.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IDevTypeJPADao.java
+D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dto\ValDevIdsDto.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IAGenericDao.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IUserDao.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IRoleJPADao.java
@@ -15,5 +18,7 @@ D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dto\DataDto.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\services\IDataService.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IDevDao.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dao\IDevJPADao.java
+D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dto\ValueDto.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\dto\DevTypeIdsDto.java
 D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\mappers\UserMapper.java
+D:\R\Prg\git\webscada\webscada\api\src\main\java\webscada\api\services\IValueService.java

@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import webscada.api.dto.UserDto;
-//import webscada.api.dto.UserPetIdsDto;
 
 @Service
 public interface IUserService {
@@ -24,7 +23,4 @@ public interface IUserService {
     
     List<UserDto> getUsers();
 
-//    void assingPetToUser(UserPetIdsDto ids);
-
-//    void getBookByIsbn(String isbn);
 }

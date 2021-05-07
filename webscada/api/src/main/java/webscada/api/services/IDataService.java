@@ -1,11 +1,11 @@
 package webscada.api.services;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import webscada.api.dto.DataDto;
+import webscada.api.dto.ValueDto;
 import webscada.api.dto.DevDto;
 //import webscada.api.dto.UserPetIdsDto;
 
@@ -13,10 +13,9 @@ import webscada.api.dto.DevDto;
 public interface IDataService {
 
 	
-	
-    DataDto readData(DevDto devDto);
+	Map<Long,Number> readDevData(DevDto devDto);
     
-    boolean writeData(DataDto dataDto, DevDto devDto);
+    boolean writeData(ValueDto dataDto, DevDto devDto);
     
-    List<DataDto> readAllData(List<DevDto> devices);//прочитать данные со всех устройств
+    List<ValueDto> readAllData(List<DevDto> devices);//прочитать данные со всех устройств
 }

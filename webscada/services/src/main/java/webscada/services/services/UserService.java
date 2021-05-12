@@ -10,19 +10,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-//import webscada.api.dao.IPetJPADao;
 import webscada.api.dao.IUserJPADao;
 import webscada.api.dao.IRoleJPADao;
 import webscada.api.dto.UserDto;
-//import eu.it.academy.api.dto.UserPetIdsDto;
 import webscada.api.mappers.UserMapper;
+import webscada.api.services.IEventService;
 import webscada.api.services.IUserService;
-//import eu.it.academy.entities.Pet;
 import webscada.entity.User;
 import webscada.entity.Role;
+import webscada.entity.TypeEvent;
 import webscada.services.utils.LogoFileUploader;
-//import eu.it.academy.web.BookDetails;
-//import eu.it.academy.web.WebScraper;
+
 import lombok.extern.slf4j.Slf4j;
 import webscada.api.utils.IEmailSender;
 
@@ -32,19 +30,20 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserJPADao userJPADao;
+
 	@Autowired
 	private IRoleJPADao roleJPADao;
+
 	@Autowired
 	private IEmailSender emailSender;
-//
-//    @Autowired
-//    private IPetJPADao petJPADao;
-//    
+
+	@Autowired
+	private IEventService eventService;
+
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-//    @Autowired
-//    WebScraper webScraper;
+	public static final int EVENT_USER_REGISTER = 3;
 
 	@Override
 	public UserDto findUser(long id) {
@@ -58,39 +57,31 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public UserDto createUser(UserDto userDto) {// throws Exception {
+	public UserDto createUser(UserDto userDto) {
 
-		User user = new User(); // вот! создали ЮЗЕРА
+		User user = new User();
 		user.setLogin(userDto.getLogin());
 		user.setEmail(userDto.getEmail());
+		user.setInfo(userDto.getInfo());
 		user.setEnabled(true);
+		// TODO в сравнении юзеров и мыла делать toLowerCase
 		User userByLogin = this.userJPADao.findByLogin(userDto.getLogin());
 		User userByEmail = this.userJPADao.findByEmail(userDto.getEmail());
 		if (((userByLogin) != null) || ((userByEmail) != null)) {
 			log.error("Failed to registerUser. The Login or Email already exists");
-			// TODO переделать! Если юзер или мэйл существует
+			// TODO переделать
 			return null;
 		}
-
 		user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-		Role role = new Role();
-		role = roleJPADao.findByRoleName("ROLE_VIEWER");
 		HashSet<Role> roles = new HashSet<Role>();
-
-		roles.add(role);
+		roles.add(roleJPADao.findByRoleName("ROLE_VIEWER"));
 		user.setRoles(roles);
 		try {
-			User savedUser = this.userJPADao.save(user); // ЗАПИСАЛИ ЮЗЕРА
-			// TODO автовход. Регистрация нового фбукюзера сделана.
+			User savedUser = this.userJPADao.save(user);
 			UserDto registeredUser = UserMapper.mapUserDto(savedUser);
-
-			try {
-				emailSender.sendEmailToAdmin(registeredUser, 1);
-				emailSender.sendEmailFromAdmin(savedUser, 1);
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				log.error("FFFailed to sent email");
-			}
+			emailSender.sendEmailToAdmin(registeredUser, 1);
+			emailSender.sendEmailFromAdmin(savedUser, 1);
+			eventService.createEvent(EVENT_USER_REGISTER, savedUser);
 			return registeredUser;
 
 		} catch (Exception e) {
@@ -107,6 +98,7 @@ public class UserService implements IUserService {
 			user.setLogin(userDto.getLogin());
 			user.setEmail(userDto.getEmail());
 			user.setEnabled(userDto.isEnabled());
+			user.setInfo(userDto.getInfo());
 
 			try {
 				this.userJPADao.save(user);
@@ -124,7 +116,6 @@ public class UserService implements IUserService {
 		try {
 			emailSender.sendEmailFromAdmin(user, 1);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			log.error("FFFailed to sent email from upd");
 		}
 

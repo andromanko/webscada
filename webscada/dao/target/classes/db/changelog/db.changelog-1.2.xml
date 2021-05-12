@@ -34,7 +34,7 @@
 				value="$2a$10$DRK1.kPrvPkTAD6q6Fgwm.Jm2EZR8EIrUl1ZisJ9aHCCc9khZBIpi" />
 			<column name="info" value="developer of this ВУНДНРВАФЛЯ" />
 			<column name="email" value="andromanko@gmail.com" />
-			<!-- <column name="enabled" value="TRUE" /> -->
+			<!-- <column name="enabled" valueBoolean="TRUE" /> -->
 		</insert>
 		<insert tableName="user_role">
 			<column name="user_id" value="13" />

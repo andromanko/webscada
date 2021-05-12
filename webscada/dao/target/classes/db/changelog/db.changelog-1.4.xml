@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+	<changeSet id="changelog-1.3" author="roma"
+		objectQuotingStrategy="LEGACY">
+		<!--СТАНДАРТ юзвери -->
+
+		<insert tableName="type_event">
+			<column name="id" value="9" />
+			<column name="event_name" value="Превышение уровня" />
+		</insert>
+
+		<insert tableName="type_event">
+			<column name="id" value="10" />
+			<column name="event_name" value="Снижение уровня" />
+		</insert>
+		<insert tableName="value">
+			<column name="id" value="1" />
+			<column name="name" value="Давление в сети" />
+			<column name="dev_id" value="1" />
+			<column name="units" value="кПа" />
+			<column name="addr" value="40200" />
+			<column name="max" value="330" />
+			<column name="max_ms" value="10000" />
+			<column name="max_event_id" value="1" />
+			<column name="min" value="200" />
+			<column name="min_ms" value="30000" />
+			<column name="min_event_id" value="2" />
+		</insert>
+		<insert tableName="value">
+			<column name="id" value="2" />
+			<column name="name" value="Уровень в резервуаре" />
+			<column name="dev_id" value="2" />
+			<column name="units" value="м" />
+			<column name="addr" value="40200" />
+			<column name="max" value="4" />
+			<column name="max_ms" value="10000" />
+			<column name="max_event_id" value="9" />
+			<column name="min" value="-1" />
+			<column name="min_ms" value="30000" />
+			<column name="min_event_id" value="10" />
+		</insert>
+	</changeSet>
+
+</databaseChangeLog>                

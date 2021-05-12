@@ -17,6 +17,7 @@ public class DevMapper {
                 .IP(source.getIP())
                 .addr(source.getAddr())
                 .port(source.getPort())
+                .type_id(DevTypeMapper.INSTANCE.mapDevType(source.getDevType()))
                 .build();
     }
 
@@ -27,6 +28,7 @@ public class DevMapper {
                 .IP(source.getIP())
                 .addr(source.getAddr())
                 .port(source.getPort())
+                .devType(DevTypeMapper.INSTANCE.mapDevTypeDto(source.getType_id()))
                 .build();
     }
 

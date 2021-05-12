@@ -6,4 +6,5 @@ import webscada.entity.DevType;
 public interface IDevTypeJPADao extends JpaRepository<DevType, Integer> {
 
 	DevType findByDevType(String devType);
+	DevType findById(int id);
 }

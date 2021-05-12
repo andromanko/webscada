@@ -9,10 +9,10 @@
 <body>
 
 	<div>
-		<h1 th:text="${title}" />
+		<h1 th:text="${title}" /></h1>
 	</div>
-	<div class="user-wrapper">
-		<div th:each="oneDev : ${devsList}" class="user-div">
+	<div class="dev-wrapper">
+		<div th:each="oneDev : ${devsList}" class="dev-div">
 			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
 			<p th:text="'Dev name is: ' + ${oneDev.devName}" />
 			<a th:href="@{'devices/' + ${oneDev.id}}">More info</a>
@@ -31,7 +31,7 @@
 				<div class="modal-body">
 
 					<div th:each="oneDev : ${devsList}">
-						<p th:text="'User: ' + ${oneDev.devName}" />
+						<p th:text="'Dev: ' + ${oneDev.devName}" />
 <!-- 						<p th:text="'User: ' + ${oneDev.devName}" /> -->
 					</div>
 
@@ -43,15 +43,11 @@
 		</div>
 	</div>
 	<div>
+		<a href="/"> Main page </a>
 		<a href="/users">User Control for admin</a>
-	</div>
-	<div>
 		<a href="/devices">Devices for engineer</a>
-	</div>
-	<div>
 		<a href="/monitor">monitoring for viewer</a>
-	</div>
-	<div>
+		<a href="/values">edit values for engineer</a>
 		<a href="/logout">LOGOUT Nach!</a>
 	</div>
 </body>

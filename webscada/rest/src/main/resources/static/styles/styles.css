@@ -1,7 +1,7 @@
 .user-wrapper {
 	width: 450px;
 	height: 500px;
-	border:	1px solid black;
+	border: 1px solid black;
 	display: flex;
 	align-items: center;
 	justify-content: space-around;
@@ -11,7 +11,7 @@
 .user-description {
 	width: 800px;
 	height: 500px;
-	border:	1px solid black;
+	border: 1px solid black;
 	display: flex;
 	align-items: left;
 	justify-content: space-around;
@@ -19,13 +19,34 @@
 }
 
 .user-div {
-	border:	1px solid red;
-	width: 200px;
-	height: 140px;
+	border: 1px solid red;
+	width: 500px;
+	height: 200px;
 	padding-left: 10px;
+	align-items: center;
+	justify-content: space-around;
 }
 
 .user-div:hover {
 	transform: scale(1.05);
 	background-color: lightgray;
+}
+
+.dev-wrapper {
+	width: 450px;
+	height: 300px;
+	border: 1px solid black;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-wrap: wrap;
+}
+
+.dev-div {
+	border: 1px solid red;
+	width: 500px;
+	height: 100px;
+	padding-left: 10px;
+	align-items: center;
+	justify-content: space-around;
 }

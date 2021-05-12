@@ -1,15 +1,11 @@
 package webscada.rest.controllers;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import webscada.api.dto.UserDto;
-//import webscada.api.dto.UserPetIdsDto;
 import webscada.api.services.IUserService;
 
 @RestController
@@ -27,11 +22,7 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 
-//	@Autowired
-//	Principal principal;//=getPrincipal();
-	
-	//Principal principal;
-	
+		
 	@GetMapping
 	public ModelAndView findUsers() {
 		
@@ -45,6 +36,7 @@ public class UserController {
 
 	@GetMapping(value = "/{id}")
 	public ModelAndView findUser(@PathVariable int id) {
+		
 		UserDto user = userService.findUser(id);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("userPage");
@@ -76,7 +68,7 @@ public class UserController {
 
 	@PostMapping(value = "/add")
 	public ModelAndView createUserSubmit(UserDto user) {
-		ModelAndView modelAndView = new ModelAndView("usersPage");
+		ModelAndView modelAndView = new ModelAndView("userPage");
 		
 		modelAndView.addObject("user",  this.userService.createUser(user));
 		return modelAndView;
@@ -85,22 +77,28 @@ public class UserController {
 	// ===============update=================
 
 	@GetMapping(value = "/upd")
-	public ModelAndView updateUser() {
+	public ModelAndView updateUser(UserDto user) {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("usersFormPageUpd");
-		modelAndView.addObject("user", new UserDto());
+		modelAndView.addObject("user", user);
 		return modelAndView;
 	}
 
     @PostMapping(value = "/upd")
     public void updateUser(UserDto user, @RequestParam(value = "file", required = false) MultipartFile file) {
         this.userService.updateUser(user.getLogin(), user, file);
+        this.findUsers();
     }
 
 	// ================================
-//TODO куда метод будет вываливаться? нужен редирект?
 	@PostMapping(value = "/del")   
-	public void deleteUser(UserDto user) {
+	public ModelAndView deleteUser(UserDto user) {
 		this.userService.deleteUser(user.getId());
+		return findUsers();
+	}
+	
+	@GetMapping(value = "/del")   
+	public ModelAndView deleteUser() {
+		return this.findUsers();
 	}
 }

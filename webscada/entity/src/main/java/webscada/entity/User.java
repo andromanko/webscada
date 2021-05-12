@@ -1,6 +1,5 @@
 package webscada.entity;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -28,31 +27,31 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@Table(name = "user")											
+@Table(name = "user")
 public class User extends AEntity<Long> {
 
-    @NotNull
+	@NotNull
 	@Column(name = "login")
-    private String login;
-    
-    @NotNull
-    @Column(name = "password")
-    private String password;
-    
-    @Email(message = "Email should be valid")
-    @Column(name = "email")
-    private String email;
-    
-    @Column(name = "info")
-    private String info;    
-    
-    @Column(name = "enabled")
-    private boolean enabled;
-    
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private Set<Role> roles;
-  
-    @OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Event> events;
+	private String login;
+
+	@NotNull
+	@Column(name = "password")
+	private String password;
+
+	@Email(message = "Email should be valid")
+	@Column(name = "email")
+	private String email;
+
+	@Column(name = "info")
+	private String info;
+
+	@Column(name = "enabled")
+	private boolean enabled;
+
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+	private Set<Role> roles;
+	
+	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+	private List<Event> events;
 }

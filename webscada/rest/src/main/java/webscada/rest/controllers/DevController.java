@@ -17,6 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import webscada.api.dto.DevDto;
+import webscada.api.dto.DevTypeIdsDto;
 //import webscada.api.dto.UserPetIdsDto;
 import webscada.api.services.IDevService;
 
@@ -27,14 +28,8 @@ public class DevController {
 	@Autowired
 	private IDevService devService;
 
-//	@Autowired
-//	Principal principal;//=getPrincipal();
-	
-	//Principal principal;
-	
 	@GetMapping
 	public ModelAndView findDevs() {
-		
 		List<DevDto> devs = devService.getDevs();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("devicesPage");
@@ -90,15 +85,8 @@ public class DevController {
 		this.devService.deleteDev(id);
 	}
 
-//	@PatchMapping()
-//	public void assingPetToUser(@RequestBody UserPetIdsDto ids) {
-//		this.userService.assingPetToUser(ids);
-//	}
-
-//	@GetMapping("/book")
-//	public ModelAndView search(@RequestParam(value = "isbn", required = false) String isbn) {
-//		ModelAndView modelAndView = new ModelAndView();
-//		userService.getBookByIsbn(isbn);
-//		return modelAndView;
-//	}
+	@PatchMapping()
+	public void assignDevToType(@RequestBody DevTypeIdsDto ids) {
+		this.devService.assignDevToType(ids);
+	}
 }

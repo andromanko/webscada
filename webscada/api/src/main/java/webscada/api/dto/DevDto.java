@@ -20,4 +20,9 @@ public class DevDto {
     private byte addr;
     private short port;
     private DevTypeDto devType;
+    
+	@Override
+	public String toString() {
+		return this.devName;
+	}
 }

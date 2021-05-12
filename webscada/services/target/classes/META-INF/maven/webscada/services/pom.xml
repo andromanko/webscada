@@ -13,12 +13,10 @@
 		<dependency>
 			<groupId>webscada</groupId>
 			<artifactId>api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>webscada</groupId>
 			<artifactId>dao</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>webscada</groupId>
@@ -30,30 +28,9 @@
 			<artifactId>utils</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>webscada</groupId> -->
-		<!-- <artifactId>web</artifactId> -->
-		<!-- <version>0.0.1-SNAPSHOT</version> -->
-		<!-- </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-		<!-- <dependency> -->
-		<!-- <groupId>org.projectlombok</groupId> -->
-		<!-- <artifactId>lombok</artifactId> -->
-		<!-- <optional>true</optional> -->
-		<!-- </dependency> -->
-
-
-		<dependency>
-			<groupId>org.apache.plc4x</groupId>
-			<artifactId>plc4j-driver-modbus</artifactId>
-			<version>0.8.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/at.bestsolution.efxclipse.eclipse/org.apache.commons.cli -->
-		<!-- https://mvnrepository.com/artifact/com.anaptecs.jeaf.owalibs/org.apache.commons.cli -->
-
-
 	</dependencies>
 </project>

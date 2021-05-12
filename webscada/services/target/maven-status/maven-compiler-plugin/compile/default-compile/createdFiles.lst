@@ -1,0 +1,7 @@
+webscada\services\services\UserService.class
+webscada\services\services\ValueService.class
+webscada\services\services\DevService.class
+webscada\services\config\ServiceConfiguration.class
+webscada\services\services\EventService.class
+webscada\services\utils\CliOptions.class
+webscada\services\utils\LogoFileUploader.class

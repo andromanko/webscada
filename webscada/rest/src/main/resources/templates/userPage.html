@@ -1,4 +1,4 @@
-<html xmlns:th="http://thymeleaf.org">
+srr4<html xmlns:th="http://thymeleaf.org">
 <head>
 <title>User page</title>
 <link href="../styles/styles.css" rel="stylesheet" />
@@ -12,13 +12,18 @@
 		<h1 th:text = "${user.login} + '\'s personal page'" ></h1>
 	</div>
 	<div class = "user-description">
-<!-- 		<div class = "user-div"> -->
 			<p th:text="'User id is: ' + ${user.id}" />
 			<p th:text="'User login is: ' + ${user.login}" />
 			<p th:text="'User e-mail is: ' + ${user.email}" />
 			<p th:text="'About user: ' + ${user.info}" />
-			<img th:src = "@{'../images/' + ${user.login} + '.jpg'}" />
-<!-- 		</div> -->
+			<img th:src = "@{'../images/' + ${user.login} + '.jpg'}"width="200" height="200" alt="No Image">
+	</div>
+		<div>
+		<a href="/users">User Control for admin</a>
+		<a href="/devices">Devices for engineer</a>
+		<a href="/monitor">monitoring for viewer</a>
+		<a href="/values">edit values for engineer</a>
+		<a href="/logout">LOGOUT Nach!</a>
 	</div>
 </body>
 </html>

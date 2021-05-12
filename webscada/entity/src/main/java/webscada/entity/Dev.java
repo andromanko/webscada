@@ -12,52 +12,47 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.constraints.pl.NIP;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.SuperBuilder;
-//import lombok.extern.slf4j.Slf4j;
-
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@SuperBuilder 
+@SuperBuilder
 @Entity
-@Table(name="device")
+@Table(name = "device")
 public class Dev extends AEntity<Long> {
-	
-	@Column(name="DevName")
+
+	@Column(name = "DevName")
 	private String devName;
-	
-	
+
 	@Pattern(regexp = "^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$")
-	@Column(name="IP")
+	@Column(name = "IP")
 	private String IP;
-	
-	@Column(name="addr")
+
+	@Column(name = "addr")
 	private byte addr;
-	
-	@Column(name="port")
+
+	@Column(name = "port")
 	private short port;
-	
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
-    private DevType type_id;
-    
-    @OneToMany(mappedBy = "dev_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Event> events;
-    
-    @OneToMany(mappedBy = "dev_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
-    private List<Value> values;
-//	
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "user_id", referencedColumnName = "id")
-//    private User user;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "type_id", referencedColumnName = "id")
+	private DevType type_id;
+
+	@OneToMany(mappedBy = "dev_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+	private List<Event> events;
+
+	@OneToMany(mappedBy = "devId", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+	private List<Value> values;
+
+	@Override
+	public String toString() {
+		return this.devName;
+	}
 
 }
-

@@ -28,12 +28,10 @@ public class MainController {
     	ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("mainpage");
 		modelAndView.addObject("title", "Main Page");
-//		if (principal.getName() != null) {
 			String name=principal!=null ? principal.getName() : "not authorized";
-//		} else name="none";
-				
+			String role = "none";
 		modelAndView.addObject("login", name);
-//		modelAndView.addObject("role", principal.toString());
+		modelAndView.addObject("role", role);
 		return modelAndView;
    	
     }
@@ -47,19 +45,6 @@ public class MainController {
     public String error403() {
         return "error/403";
     }
-    
-//    @GetMapping("/devices")
-//    public String devices() {
-//    	
-//    	//Principal principal;
-//    	
-//        return "devices";
-//    }
-    
-//    @GetMapping("/monitor")
-//    public String monitor() {
-//        return "monitor";
-//    }
     
     @GetMapping("/anonymous")
     public String anonymous() {

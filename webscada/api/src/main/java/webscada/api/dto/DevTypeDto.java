@@ -18,5 +18,10 @@ public class DevTypeDto {
     private String type;
     private String description;
     private String url;
-    private List<DevDto> devs;
+    //private List<DevDto> devs;
+    
+    @Override
+    public String toString() {
+    	return this.type;
+    }
 }

@@ -19,6 +19,11 @@ import lombok.experimental.SuperBuilder;
 @Table(name = "role")
 public class Role extends AEntity<Integer> {
 
-    @Column(name = "role")
-    private String roleName;
+	@Column(name = "role")
+	private String roleName;
+
+	@Override
+	public String toString() {
+		return this.roleName.substring(5);
+	}
 }

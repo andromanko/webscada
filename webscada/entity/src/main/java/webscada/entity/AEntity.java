@@ -20,8 +20,8 @@ import lombok.experimental.SuperBuilder;
 @MappedSuperclass
 public abstract class AEntity<T> {
 
-    @Id
-    @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected T id;
+	@Id
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	protected T id;
 }

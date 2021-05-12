@@ -1,7 +1,5 @@
 package webscada.rest.controllers;
 
-import java.security.Principal;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import webscada.api.dto.UserDto;
 import webscada.api.services.IUserService;
-import webscada.entity.User;
 
 @Controller
 @RequestMapping(value = "/signup")
@@ -40,11 +37,9 @@ public class SignupController {
     @PostMapping
     public String submitCreatingUser(@ModelAttribute UserDto dto, Model model, HttpServletRequest request) {
         try {
-            model.addAttribute("dto", dto);
-            UserDto dtoNew = userService.createUser(dto); //внутри мы "новенькому" присавиваем роль VIEWER
-            //UserDto newUser = userService.findUser(dtoNew.getId());
-            //здесь пробуем войти новоприбывшим юзером
-            authWithAuthManager(request, dto.getLogin(), dto.getPassword());
+            UserDto dtoNew = userService.createUser(dto);
+            model.addAttribute("dto", dtoNew);
+            authWithAuthManager(request, dtoNew.getLogin(), dtoNew.getPassword());
         } catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
             return "/error/createEntityError";
@@ -60,5 +55,9 @@ public class SignupController {
         Authentication authentication = authenticationManager.authenticate(authToken);
         
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        if (authentication.isAuthenticated()) {
+        	//TODO некрасиво. Переделать Возможно аргументы метода createEvent
+ //       	eventService.createEvent(4,UserMapper.mapUser(userService.findUserByLogin(username)));  
+        }
     }
 }

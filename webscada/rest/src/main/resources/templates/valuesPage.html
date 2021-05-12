@@ -1,0 +1,32 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Values page for Engineer</title>
+<link href="styles/styles.css" rel="stylesheet" />
+<link href="styles/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<h1 th:text="${title}" />
+	</div>
+	<div class="user-wrapper">
+		<div th:each="value: ${valsList}" class="user-div">
+			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
+			<p th:text="'Value name is: ' + ${value.name}" />
+			<p th:text="'Unit: ' + ${value.units}" />
+<!-- 			<p th:text="'Device: ' + 'TODO DEV TYPE" /> -->
+
+			<a th:href="@{'values/' + ${value.id}}">More info</a>
+		</div>
+	</div>
+	<div>
+		<a href="/users">User Control for admin</a>
+		<a href="/devices">Devices for engineer</a>
+		<a href="/monitor">monitoring for viewer</a>
+		<a href="/values">edit values for engineer</a>
+		<a href="/logout">LOGOUT Nach!</a>
+	</div>
+</body>
+</html>

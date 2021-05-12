@@ -14,12 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import com.digitalpetri.modbus.codec.Modbus;
-import com.digitalpetri.modbus.master.ModbusTcpMaster;
-import com.digitalpetri.modbus.master.ModbusTcpMasterConfig;
-import com.digitalpetri.modbus.requests.ReadHoldingRegistersRequest;
-import com.digitalpetri.modbus.responses.ReadHoldingRegistersResponse;
-
 import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
 import webscada.api.dao.IDevJPADao;
@@ -40,50 +34,86 @@ import webscada.entity.Value;
 import webscada.entity.Dev;
 import webscada.entity.DevType;
 
-import org.apache.plc4x.java.PlcDriverManager;
-import org.apache.plc4x.java.api.PlcConnection;
-import org.apache.plc4x.java.api.messages.PlcReadRequest;
-import org.apache.plc4x.java.api.messages.PlcReadResponse;
-import org.apache.plc4x.java.api.types.PlcResponseCode;
+import webscada.utils.communication.modbusTCP;
+import webscada.api.utils.IModbusTCP;
 
 @Slf4j
 @Service
 public class DataService implements IDataService {
 
-	//private final ValueMapper valueMapper;
-	
-	@Autowired
-	private IValueJPADao valueJPADao;
-	
 	private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
 
 	private volatile boolean started = false;
 
 	@Autowired
+	private IValueJPADao valueJPADao;
+
+	@Autowired
 	private IDevService devService;
 
-//TODO  тут нужно сделать JPAdao - чтобы вытягивать инфо о данных которые нужно прочитать
 	@Autowired
 	private IDevJPADao devDao;
 
+	@Autowired
+	private IModbusTCP modbusTCP;
+	
 	@Override
-	public List<ValueDto> readAllData(List<DevDto> devices) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<Value, Number> readAllData() {
+
+		List<DevDto> devices = devService.getDevs();
+		Map<Value, Number> data = new HashMap<Value, Number>();
+		for (DevDto device : devices) {
+			data.putAll(readDevData(device));
+		}
+		return (data != null) ? data : null;
 	}
 
-
 	@Override
-	public Map<Long, Number> readDevData(DevDto devDto) {
-		// TODO Auto-generated method stub
+	public Map<Value, Number> readDevData(DevDto devDto) {
+		
+		// выбираем все data для данного dev
+		List<Value> values = valueJPADao.findByDevId(DevMapper.mapDev(devDto));
+		
+		if (values==null) return null;
+		
+		
+		
+		DevTypeDto devType = devDto.getDevType();
+		
+		if (devType.getId() ==1) {
+			 modbusTCP.start( DevMapper.mapDev(devDto), values);
+			 Map<Value, Number> vals= new HashMap<Value, Number>();
+			 vals.put(values.get(1), -1);
+			 return vals;
+		}
+		if (devType.getId() ==2) {
+			return readFX5Data( devDto, values);
+		}
+		if (devType.getId() ==3) {
+			return readWebData( devDto, values);
+		}
+
 		return null;
 	}
-
 
 	@Override
 	public boolean writeData(ValueDto dataDto, DevDto devDto) {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
+
+	@Override
+	public Map<Value, Number> readModbusTCPData(DevDto devDto, List<Value> values) {
+		return null;
+	}
+	@Override
+	public Map<Value, Number> readFX5Data(DevDto devDto, List<Value> values) {
+		return null;
+	}
+	@Override
+	public Map<Value, Number> readWebData(DevDto devDto, List<Value> values) {
+		return null;
+	}
+
 }

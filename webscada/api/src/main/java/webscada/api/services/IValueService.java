@@ -3,30 +3,26 @@ package webscada.api.services;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import webscada.api.dto.ValueDto;
+
 import webscada.api.dto.DevDto;
 import webscada.api.dto.ValDevIdsDto;
-
+import webscada.api.dto.ValueDto;
 
 @Service
 public interface IValueService {
 
-   ValueDto getValue(long id);
-    
-    //UserDto findUserByLogin(String login);
-    
-//    UserDto findUserByEmail(String email);
-    
-    ValueDto createValue(ValueDto value);
-    
-    void updateValue(long id, ValueDto valueDto);
-    
-    void deleteValue(long id);
-    
-    List<ValueDto> getValues();
-    
-    List<ValueDto> getValuesByDev(DevDto dev);
+	ValueDto findValue(long id);
 
-    void assingValueToDev(ValDevIdsDto ids);
+	ValueDto createValue(ValueDto value);
+
+	void updateValue(long id, ValueDto valueDto);
+
+	void deleteValue(long id);
+
+	List<ValueDto> findValues();
+
+	List<ValueDto> findValuesByDev(DevDto dev);
+
+	void assignValueToDev(ValDevIdsDto ids);
 
 }

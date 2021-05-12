@@ -13,9 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>webscada</name>
-	<properties>
-		<java.version>1.8</java.version>
-	</properties>
+
 	<modules>
 		<module>entity</module>
 		<module>main</module>
@@ -26,4 +24,92 @@
 		<module>logger</module>
 		<module>utils</module>
 	</modules>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven.compiler.source>8</maven.compiler.source>
+		<org.mapstruct>1.4.2.Final</org.mapstruct>
+		<org.hibernate.validator>6.0.13.Final</org.hibernate.validator>
+		<org.springframework.social>2.0.3.RELEASE</org.springframework.social>
+		<org.apache.plc4x>0.8.0</org.apache.plc4x>
+		<com.h2database>1.4.200</com.h2database>
+		<net.sourceforge.htmlunit>2.49.1</net.sourceforge.htmlunit>
+		<org.springframework.boot>1.4.7.RELEASE</org.springframework.boot>
+		<!-- automatically run annotation processors within the incremental compilation -->
+		<m2e.apt.activation>jdt_apt</m2e.apt.activation>
+	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-velocity</artifactId>
+				<version>1.4.7.RELEASE</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>1.4.200</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/net.sourceforge.htmlunit/htmlunit -->
+			<dependency>
+				<groupId>net.sourceforge.htmlunit</groupId>
+				<artifactId>htmlunit</artifactId>
+				<version>2.49.1</version>
+			</dependency>
+			<dependency>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-core</artifactId>
+				<version>4.3.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.social</groupId>
+				<artifactId>spring-social-facebook</artifactId>
+				<version>2.0.3.RELEASE</version>
+			</dependency>
+			<!-- https://mvnrepository.com/artifact/org.mapstruct/mapstruct-processor -->
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct</artifactId>
+				<version>1.4.2.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mapstruct</groupId>
+				<artifactId>mapstruct-processor</artifactId>
+				<version>1.3.1.Final</version>
+			</dependency>
+
+			<dependency>
+				<groupId>webscada</groupId>
+				<artifactId>entity</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>webscada</groupId>
+				<artifactId>dao</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>webscada</groupId>
+				<artifactId>services</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>webscada</groupId>
+				<artifactId>rest</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>webscada</groupId>
+				<artifactId>api</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.plc4x</groupId>
+				<artifactId>plc4j-driver-modbus</artifactId>
+				<version>0.8.0</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 </project>

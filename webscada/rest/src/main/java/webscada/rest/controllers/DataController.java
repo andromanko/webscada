@@ -3,6 +3,7 @@ package webscada.rest.controllers;
 import java.security.Principal;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +23,7 @@ import webscada.api.dto.DevDto;
 //import webscada.api.dto.UserPetIdsDto;
 import webscada.api.services.IDataService;
 import webscada.api.services.IDevService;
+import webscada.entity.Value;
 
 @RestController
 @RequestMapping("/monitor")
@@ -33,16 +35,10 @@ public class DataController {
 	@Autowired
 	private IDataService dataService;
 
-//	@Autowired
-//	Principal principal;//=getPrincipal();
-	
-	//Principal principal;
-	
 	@GetMapping
 	public ModelAndView viewData() {
-		List<DataDto> data = new LinkedList<DataDto>();
-		List<DevDto> devices=devService.getDevs();
-				//data = dataService.readAllData(devices);
+		
+		Map<Value, Number> data = dataService.readAllData();
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("monitor");
 		modelAndView.addObject("title", "Data");

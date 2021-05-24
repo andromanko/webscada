@@ -1,24 +1,20 @@
 package webscada.api.services;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
 import webscada.api.dto.DevDto;
-import webscada.api.dto.ValueDto;
-import webscada.entity.Value;
+import webscada.api.dto.ValueReal;
 
 @Service
 public interface IDataService {
 
-	Map<Value, Number> readDevData(DevDto devDto);
+	boolean writeData(ValueReal valueReal, DevDto devDto);
 
-	boolean writeData(ValueDto dataDto, DevDto devDto);
+//	Map<Long, ValueReal> getAllData();
 
-	Map<Value, Number> readAllData();
-	
-	Map<Value, Number> readModbusTCPData(DevDto devDto, List<Value> values);
-	Map<Value, Number> readFX5Data(DevDto devDto, List<Value> values);
-	Map<Value, Number> readWebData(DevDto devDto, List<Value> values);
+	// List<ValueReal>
+	Map<Long, ValueReal> readAllData();
+
 }

@@ -11,22 +11,28 @@
 	<div>
 		<h1 th:text="${title}" />
 	</div>
-	<div class="user-wrapper">
-		<div th:each="value: ${valsList}" class="user-div">
-			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
-			<p th:text="'Value name is: ' + ${value.name}" />
-			<p th:text="'Unit: ' + ${value.units}" />
-<!-- 			<p th:text="'Device: ' + 'TODO DEV TYPE" /> -->
-
-			<a th:href="@{'values/' + ${value.id}}">More info</a>
-		</div>
-	</div>
+	<table class="table">
+		<tr>
+			<th>Value</th>
+			<th>Unit</th>
+			<th>Device</th>
+			<th>Info</th>
+		</tr>
+	
+	<tr th:each="value: ${valsList}" >
+		<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
+		<td  th:text=" ${value.name}" ></td>
+		<td  th:text="${value.units}" ></td>
+		<td  th:text=" ${value.devId}" ></td>
+		<td ><a th:href="@{'values/' + ${value.id}}">Link</a></td>
+	</table>
 	<div>
-		<a href="/users">User Control for admin</a>
-		<a href="/devices">Devices for engineer</a>
+		<a href="/users">User Control for admin</a> 
+		<a href="/devices">Devices for engineer</a> 
 		<a href="/monitor">monitoring for viewer</a>
-		<a href="/values">edit values for engineer</a>
-		<a href="/logout">LOGOUT Nach!</a>
+		<a href="/monitor/events">Events for viewer</a>
+		<a href="/values">edit values for engineer</a> 
+		<a href="/logout">LOGOUT !</a>
 	</div>
 </body>
 </html>

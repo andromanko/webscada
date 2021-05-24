@@ -1,6 +1,5 @@
 package webscada.rest.controllers;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import webscada.api.dto.DevDto;
@@ -51,7 +48,7 @@ public class DevController {
 
 	@GetMapping(value = "/add")
 	public ModelAndView createDev() {
-		//TODO create dev
+		// TODO create dev
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("devsFormPage");
 		modelAndView.addObject("dev", new DevDto());
@@ -73,10 +70,10 @@ public class DevController {
 		return modelAndView;
 	}
 
-    @PostMapping(value = "/upd")
-    public void updateUser(DevDto dev) {
-        this.devService.updateDev(dev.getId(), dev);
-    }
+	@PostMapping(value = "/upd")
+	public void updateUser(DevDto dev) {
+		this.devService.updateDev(dev.getId(), dev);
+	}
 
 	// ================================
 

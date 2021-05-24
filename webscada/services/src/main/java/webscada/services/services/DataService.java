@@ -1,49 +1,31 @@
 package webscada.services.services;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
-import webscada.api.dao.IDevJPADao;
-import webscada.api.dao.IUserJPADao;
 import webscada.api.dao.IValueJPADao;
 import webscada.api.dto.DevDto;
-import webscada.api.dto.ValueDto;
 import webscada.api.dto.DevTypeDto;
-import webscada.api.dto.DevTypeIdsDto;
-import webscada.api.dto.UserDto;
-import webscada.api.dto.ValDevIdsDto;
+import webscada.api.dto.ValueReal;
 import webscada.api.mappers.DevMapper;
-import webscada.api.mappers.ValueMapper;
-import webscada.api.services.IValueService;
 import webscada.api.services.IDataService;
 import webscada.api.services.IDevService;
-import webscada.entity.Value;
-import webscada.entity.Dev;
-import webscada.entity.DevType;
-
-import webscada.utils.communication.modbusTCP;
+import webscada.api.services.IEventService;
+import webscada.api.services.IUserService;
 import webscada.api.utils.IModbusTCP;
+import webscada.entity.Value;
+import webscada.utils.communication.WebScraper;
 
 @Slf4j
 @Service
 public class DataService implements IDataService {
 
-	private final ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
-
-	private volatile boolean started = false;
+	private static Map<Long, ValueReal> data = new HashMap<>();
 
 	@Autowired
 	private IValueJPADao valueJPADao;
@@ -52,68 +34,95 @@ public class DataService implements IDataService {
 	private IDevService devService;
 
 	@Autowired
-	private IDevJPADao devDao;
+	private IModbusTCP modbusTCP;
 
 	@Autowired
-	private IModbusTCP modbusTCP;
+	private IEventService eventService;
+	
+	@Autowired
+	private IUserService userService;
+	
+	@Autowired
+	private WebScraper webScrapper;
 	
 	@Override
-	public Map<Value, Number> readAllData() {
-
+	public Map <Long, ValueReal> readAllData() {
 		List<DevDto> devices = devService.getDevs();
-		Map<Value, Number> data = new HashMap<Value, Number>();
+
+		// TODO сделать через stream map collect
+		// source.stream().map(DevMapper::mapDev).collect(Collectors.toList());
 		for (DevDto device : devices) {
-			data.putAll(readDevData(device));
+			List<Value> values = valueJPADao.findByDevId(DevMapper.mapDev(device));
+			if (!values.isEmpty()) {
+				data.putAll(readDevData(device, values));
+			}
 		}
-		return (data != null) ? data : null;
+		analizeData();
+		return data;
 	}
 
-	@Override
-	public Map<Value, Number> readDevData(DevDto devDto) {
-		
-		// выбираем все data для данного dev
-		List<Value> values = valueJPADao.findByDevId(DevMapper.mapDev(devDto));
-		
-		if (values==null) return null;
-		
-		
-		
+	private Map <Long, ValueReal> readDevData(DevDto devDto, List<Value> values) {
+
 		DevTypeDto devType = devDto.getDevType();
-		
-		if (devType.getId() ==1) {
-			 modbusTCP.start( DevMapper.mapDev(devDto), values);
-			 Map<Value, Number> vals= new HashMap<Value, Number>();
-			 vals.put(values.get(1), -1);
-			 return vals;
-		}
-		if (devType.getId() ==2) {
-			return readFX5Data( devDto, values);
-		}
-		if (devType.getId() ==3) {
-			return readWebData( devDto, values);
-		}
+		Map <Long, ValueReal> vals  = new HashMap<>();
 
-		return null;
+		switch (devType.getId()) {
+		case 1:
+			vals.putAll(modbusTCP.start(DevMapper.mapDev(devDto), values));
+			return vals;
+		case 2:
+			// TODO FX5U next version
+			return null;
+		case 3:
+			// TODO next version readWebData( devDto, values);
+			vals.putAll(webScrapper.start(DevMapper.mapDev(devDto), values));	
+//			ValueReal value = ValueReal.builder().id(values.get(0).getId()).name("testDevTypeId=3").units("testUnits").number(13.3)
+//					.build();
+			//vals.putAll(WebScrapper.get(DevMapper.mapDev(devDto), values));
+			return vals;
+		default:
+			log.info("dev type not defined" + devType);
+			return vals;
+		}
 	}
 
 	@Override
-	public boolean writeData(ValueDto dataDto, DevDto devDto) {
+	public boolean writeData(ValueReal valueReal, DevDto devDtoo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
+	private void analizeData() {
+		//String user = SecurityContextHolder.getContext().getAuthentication().getName();
+		List<Value> values = valueJPADao.findAll();
+		for (Value value : values) {
+			long id = value.getId();
+			ValueReal valueReal = data.get(id);
+			if (valueReal != null) {
 
-	@Override
-	public Map<Value, Number> readModbusTCPData(DevDto devDto, List<Value> values) {
-		return null;
-	}
-	@Override
-	public Map<Value, Number> readFX5Data(DevDto devDto, List<Value> values) {
-		return null;
-	}
-	@Override
-	public Map<Value, Number> readWebData(DevDto devDto, List<Value> values) {
-		return null;
-	}
+				double max = (double) value.getMax();
+				double min = (double) value.getMin();
+				double number = (double) ((int) valueReal.getNumber());
+				
+				if (number > max && !valueReal.isHigh()) {
+				
+					eventService.createEvent(value.getMaxEventId().getId(), (long)13, value.getDevId().getId());
+					valueReal.setHigh(true);
+					// TODO emailSender...
+				} else if (number < max) {
+					valueReal.setHigh(false);
+				}
 
+				if (number < min & !valueReal.isLow()) {
+					//User user = UserMapper.mapUser(userService.findUserByLogin("Roma"));
+					eventService.createEvent(value.getMinEventId().getId(), (long)13,value.getDevId().getId());
+					valueReal.setLow(true);
+						// TODO emailSender...
+				}else if (number > min) {
+					valueReal.setLow(false);
+				}
+				data.put(valueReal.getId(),valueReal);
+			}
+		}
+	}
 }

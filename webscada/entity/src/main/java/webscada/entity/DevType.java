@@ -10,9 +10,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.experimental.SuperBuilder;
 
+@Setter
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
@@ -21,7 +25,7 @@ import lombok.experimental.SuperBuilder;
 public class DevType extends AEntity<Integer> {
 
 	@Column(name = "type")
-	private String devType;
+	private String type;
 
 	@Column(name = "description")
 	private String description;
@@ -29,6 +33,6 @@ public class DevType extends AEntity<Integer> {
 	@Column(name = "url")
 	private String url;
 
-	@OneToMany(mappedBy = "type_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+	@OneToMany(mappedBy = "devType", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Dev> devs;
 }

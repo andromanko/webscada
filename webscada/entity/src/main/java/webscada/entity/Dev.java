@@ -32,7 +32,7 @@ public class Dev extends AEntity<Long> {
 
 	@Pattern(regexp = "^[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}$")
 	@Column(name = "IP")
-	private String IP;
+	private String ip;
 
 	@Column(name = "addr")
 	private byte addr;
@@ -40,11 +40,12 @@ public class Dev extends AEntity<Long> {
 	@Column(name = "port")
 	private short port;
 
+	// TODO EAGER потому что !!!
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "type_id", referencedColumnName = "id")
-	private DevType type_id;
+	private DevType devType;
 
-	@OneToMany(mappedBy = "dev_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+	@OneToMany(mappedBy = "dev", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Event> events;
 
 	@OneToMany(mappedBy = "devId", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)

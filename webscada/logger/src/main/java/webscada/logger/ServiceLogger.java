@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 @Aspect
 public class ServiceLogger {
 
-    private static final Logger logger = LoggerFactory.getLogger(ServiceLogger.class);
+	private static final Logger logger = LoggerFactory.getLogger(ServiceLogger.class);
 
-    @AfterThrowing(pointcut = "execution(* eu.it.academy.services.*.*(..))", throwing = "exception")
-    public void logException(Exception exception) {
-        logger.error(exception.getMessage());
-    }
+	@AfterThrowing(pointcut = "execution(* eu.it.academy.services.*.*(..))", throwing = "exception")
+	public void logException(Exception exception) {
+		logger.error(exception.getMessage());
+	}
 }

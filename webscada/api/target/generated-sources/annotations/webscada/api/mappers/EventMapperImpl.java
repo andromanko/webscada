@@ -9,8 +9,8 @@ import webscada.entity.Event.EventBuilder;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-05-12T15:42:31+0200",
-    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.10 (Oracle Corporation)"
+    date = "2021-05-22T23:59:45+0300",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.11 (Ubuntu)"
 )
 public class EventMapperImpl implements EventMapper {
 
@@ -24,9 +24,8 @@ public class EventMapperImpl implements EventMapper {
 
         event.id( source.getId() );
         event.dateTime( source.getDateTime() );
-        event.dev_id( source.getDev_id() );
-        event.user_id( source.getUser_id() );
-        event.event_id( source.getEvent_id() );
+        event.dev( source.getDev() );
+        event.user( source.getUser() );
         event.chDate( source.getChDate() );
 
         return event.build();
@@ -44,9 +43,8 @@ public class EventMapperImpl implements EventMapper {
             eventDto.setId( source.getId() );
         }
         eventDto.setDateTime( source.getDateTime() );
-        eventDto.setDev_id( source.getDev_id() );
-        eventDto.setUser_id( source.getUser_id() );
-        eventDto.setEvent_id( source.getEvent_id() );
+        eventDto.setDev( source.getDev() );
+        eventDto.setUser( source.getUser() );
         eventDto.setChDate( source.getChDate() );
 
         return eventDto;

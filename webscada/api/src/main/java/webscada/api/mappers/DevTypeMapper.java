@@ -1,18 +1,19 @@
 package webscada.api.mappers;
 
-import org.mapstruct.Mapper;
-import org.mapstruct.factory.Mappers;
-
+import lombok.experimental.UtilityClass;
 import webscada.api.dto.DevTypeDto;
 import webscada.entity.DevType;
 
-@Mapper
-public interface DevTypeMapper {
-	
-	DevTypeMapper INSTANCE = Mappers.getMapper( DevTypeMapper.class );
-	
-	DevType mapDevType(DevTypeDto source);
-	
-	DevTypeDto mapDevTypeDto(DevType source);
-	
+@UtilityClass
+public class DevTypeMapper {
+
+	public DevTypeDto mapDevTypeDto(DevType source) {
+		return DevTypeDto.builder().id(source.getId()).type(source.getType())
+				.description(source.getDescription()).url(source.getUrl()).build();
+	}
+
+	public DevType mapDevType(DevTypeDto source) {
+		return DevType.builder().id(source.getId()).type(source.getType())
+				.description(source.getDescription()).url(source.getUrl()).build();
+	}
 }

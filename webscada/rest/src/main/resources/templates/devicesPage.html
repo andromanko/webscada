@@ -7,19 +7,22 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 </head>
 <body>
-
 	<div>
 		<h1 th:text="${title}" /></h1>
 	</div>
-	<div class="dev-wrapper">
-		<div th:each="oneDev : ${devsList}" class="dev-div">
-			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
-			<p th:text="'Dev name is: ' + ${oneDev.devName}" />
-			<a th:href="@{'devices/' + ${oneDev.id}}">More info</a>
-		</div>
-	</div>
+	<table class="table">
+		<tr>
+			<th>Устройство</th>
+			<th>Info</th>
+		</tr>
+		<tr th:each="oneDev : ${devsList}">
+			<td th:text="${oneDev.devName}"></td>
+			<td><a th:href="@{'devices/' + ${oneDev.id}}">More info</a></td>
+		</tr>
+	</table>
 	<button type="button" class="btn btn-info btn-sm"
-		data-bs-toggle="modal" data-bs-target="#activeModal">Show all devices</button>
+		data-bs-toggle="modal" data-bs-target="#activeModal">Show all
+		devices</button>
 	<!-- th:attr="data-target='#activeModal' + ${user.id}">Show user names  -->
 
 	<div id="activeModal" class="modal fade" role="dialog">
@@ -32,7 +35,7 @@
 
 					<div th:each="oneDev : ${devsList}">
 						<p th:text="'Dev: ' + ${oneDev.devName}" />
-<!-- 						<p th:text="'User: ' + ${oneDev.devName}" /> -->
+						<!-- 						<p th:text="'User: ' + ${oneDev.devName}" /> -->
 					</div>
 
 					<button type="button" class="btn btn-danger btn-sm"
@@ -43,12 +46,12 @@
 		</div>
 	</div>
 	<div>
-		<a href="/"> Main page </a>
-		<a href="/users">User Control for admin</a>
-		<a href="/devices">Devices for engineer</a>
+		<a href="/users">User Control for admin</a> 
+		<a href="/devices">Devices for engineer</a> 
 		<a href="/monitor">monitoring for viewer</a>
-		<a href="/values">edit values for engineer</a>
-		<a href="/logout">LOGOUT Nach!</a>
+		<a href="/monitor/events">Events for viewer</a>
+		<a href="/values">edit values for engineer</a> 
+		<a href="/logout">LOGOUT !</a>
 	</div>
 </body>
 </html>

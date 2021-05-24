@@ -13,6 +13,6 @@ import lombok.Setter;
 @Builder
 public class DevTypeIdsDto {
 
-    private int devTypeId;
-    private int devId;
+	private int devTypeId;
+	private int devId;
 }

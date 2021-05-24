@@ -56,4 +56,5 @@ public class Value extends AEntity<Long> {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "min_event_id", referencedColumnName = "id")
 	private TypeEvent minEventId;
+
 }

@@ -11,14 +11,15 @@ import java.nio.file.Paths;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import webscada.api.dto.UserDto;
 import lombok.experimental.UtilityClass;
+import webscada.api.dto.UserDto;
 
 @UtilityClass
 public class LogoFileUploader {
 
     private static final String IMAGE_EXTENSION = ".jpg";
-    private static final String LOGOS_FOLDER_PATH = "classpath:static/images/";
+    //private static final String LOGOS_FOLDER_PATH = "classpath:static/images/";
+    private static final String LOGOS_FOLDER_PATH = "static/images/";
 
     public void updateOrCreateLogo(MultipartFile file, UserDto dto) throws IOException {
         if (file != null && !file.isEmpty()) {
@@ -43,7 +44,8 @@ public class LogoFileUploader {
         if (file != null && !file.isEmpty()) {
             File existingFile = ResourceUtils.getFile(new StringBuilder(LOGOS_FOLDER_PATH).append(dto.getLogin())
                     .append(IMAGE_EXTENSION).toString());
-            Path path = Paths.get(existingFile.getPath());
+            String strForDebug = existingFile.getCanonicalPath();   //.getPath();
+            Path path = Paths.get(strForDebug);
             byte[] bytes = file.getBytes();
             Files.write(path, bytes);
         }

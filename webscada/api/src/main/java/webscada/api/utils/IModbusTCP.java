@@ -1,14 +1,16 @@
 package webscada.api.utils;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
+import webscada.api.dto.ValueReal;
 import webscada.entity.Dev;
 import webscada.entity.Value;
-import java.util.List;
 
 @Service
 public interface IModbusTCP {
-	public void start(Dev dev, List<Value> values);
-	public void stop();
-	
+
+	Map<Long, ValueReal> start(Dev dev, List<Value> values);
 }

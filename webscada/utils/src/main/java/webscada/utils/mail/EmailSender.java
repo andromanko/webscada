@@ -1,8 +1,10 @@
 package webscada.utils.mail;
 
 import java.io.StringWriter;
+
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
+
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 import org.springframework.beans.factory.annotation.Autowired;

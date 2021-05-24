@@ -1,6 +1,7 @@
 package webscada.api.dto;
 
 import java.util.Date;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -17,11 +18,11 @@ import webscada.entity.User;
 @Builder
 public class EventDto {
 
-    private int id;
-    private Date dateTime;
-    private Dev dev_id;
-    private User user_id;
-    private TypeEvent event_id;
-    private Date chDate;
-    
+	private int id;
+	private Date dateTime;
+	private Dev dev;
+	private User user;
+	private TypeEvent event;
+	private Date chDate;
+
 }

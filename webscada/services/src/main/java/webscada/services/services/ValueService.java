@@ -1,14 +1,10 @@
 package webscada.services.services;
 
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
-import webscada.api.dao.IDevJPADao;
 import webscada.api.dao.IValueJPADao;
 import webscada.api.dto.DevDto;
 import webscada.api.dto.ValDevIdsDto;
@@ -17,7 +13,6 @@ import webscada.api.mappers.DevMapper;
 import webscada.api.mappers.ValueMapper;
 import webscada.api.services.IDevService;
 import webscada.api.services.IValueService;
-import webscada.entity.Dev;
 import webscada.entity.Value;
 
 @Service

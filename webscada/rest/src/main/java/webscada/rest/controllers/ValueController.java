@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import webscada.api.dto.ValueDto;
 import webscada.api.dto.ValDevIdsDto;
+import webscada.api.dto.ValueDto;
 import webscada.api.services.IValueService;
 
 @RestController
@@ -69,10 +69,10 @@ public class ValueController {
 		return modelAndView;
 	}
 
-    @PostMapping(value = "/upd")
-    public void updateUser(ValueDto val) {
-        this.valueService.updateValue(val.getId(), val);
-    }
+	@PostMapping(value = "/upd")
+	public void updateUser(ValueDto val) {
+		this.valueService.updateValue(val.getId(), val);
+	}
 
 	// ================================
 

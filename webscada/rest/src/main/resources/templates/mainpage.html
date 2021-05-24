@@ -1,30 +1,36 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<title>R first page</title>
+<title>WebSCADA system</title>
 <!-- 
 <link href="css/styles.css" rel="stylesheet" />
 <link href="css/bootstrap.min.css" rel="stylesheet" />
  -->
 </head>
-<body>
+<body> 
 	<div>
-		<h1>MainPage loaded</h1>
+		<h1 th:text = "#{mainPageTitle}"></h1>
 	</div>
 	<div>
-		<div  class="user-div">
+		<div class="user-div">
 			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
 			<p th:text="'User name is: ' + ${login}" />
-<!-- 			<p th:text="'ToString:  ' + ${loginedUser.role}" /> -->
-<!-- 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a> -->
+			<p th:text="'User role is: ' + ${role}" />
+			<!-- 			<p th:text="'ToString:  ' + ${loginedUser.role}" /> -->
+			<!-- 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a> -->
 		</div>
-		</div>
-	<div>
-		<a href="/users">User Control for admin</a>
-		<a href="/devices">Devices for engineer</a>
-		<a href="/monitor">monitoring for viewer</a>
-		<a href="/values">edit values for engineer</a>
-		<a href="/logout">LOGOUT Nach!</a>
 	</div>
+	<div>
+		<a href="/users">User Control for admin</a> 
+		<a href="/devices">Devices for engineer</a> 
+		<a href="/monitor">monitoring for viewer</a>
+		<a href="/monitor/events">Events for viewer</a>
+		<a href="/values">edit values for engineer</a> 
+		<a href="/logout">LOGOUT !</a>
+	</div>
+<div>
+<a href="/?lang=en">EN</a>
+<a href="/?lang=ru">RU</a>
 
+</div>
 </body>
 </html>

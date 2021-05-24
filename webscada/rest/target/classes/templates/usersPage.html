@@ -11,36 +11,45 @@
 	<div>
 		<h1 th:text="${title}"></h1>
 	</div>
-	<a href="/users/add"> uSER ADD </a>
-	<a href="/users/upd"> update </a>
+	<p><a href="/users/add"> USER ADD </a></p>
 	<div>
 		<a href="/"> Main page </a>
 	</div>
-	<div class="user-wrapper">
-		<div th:each="oneuser : ${usersList}" class="user-div">
-			<p th:text="'User: ' + ${oneuser.login}" />
-			<p th:text="'Role: ' + ${oneuser.roles}" />
-			<a th:href="@{'users/' + ${oneuser.id}}">More info</a>
-			
-			<form action="users/upd" th:object="${oneuser}" method="get">
-				<input type="hidden" th:value="${oneuser.id}" name="id">
-				<input type="hidden" th:value="${oneuser.login}" name="login">
-				<input type="hidden" th:value="${oneuser.enabled}" name="enabled">
-				<input type="hidden" th:value="${oneuser.email}" name="email">
-				<input type="hidden" th:value="${oneuser.info}" name="info">
-				<input type="hidden" th:value="${oneuser.roles}" name="roles">
+	<div>
+		<table class="table">
+			<tr>
+				<th>User</th>
+				<th>Roles</th>
+				<th>E-mail</th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr th:each="oneuser : ${usersList}">
+				<td th:text="${oneuser.login}"></td>
+				<td th:text="${oneuser.roles}"></td>
+				<td th:text="${oneuser.email}"></td>
+				<td><a th:href="@{'users/' + ${oneuser.id}}">More info</a></td>
+				<td>
+					<form action="users/upd" th:object="${oneuser}" method="get">
+						<input type="hidden" th:value="${oneuser.id}" name="id"> <input
+							type="hidden" th:value="${oneuser.login}" name="login"> <input
+							type="hidden" th:value="${oneuser.enabled}" name="enabled">
+						<input type="hidden" th:value="${oneuser.email}" name="email">
+						<input type="hidden" th:value="${oneuser.info}" name="info">
+						<input type="hidden" th:value="${oneuser.roles}" name="roles">
+						<button type="submit">update</button>
+					</form>
+				</td>
+				<td>
+					<form action="users/del" method="post">
+						<input type="hidden" th:value="${oneuser.id}" name="id">
+						<button type="submit">Delete</button>
+					</form>
+				</td>
+			</tr>
+		</table>
 
-				<button type="submit">update</button>
-			</form>
-
-			<form action="users/del" method="post">
-				<!-- 				<p class="card-text" th:text="${oneuser.id}" /> -->
-				<!-- 				<input type="hidden" th:value="${oneuser.login}" name="login"/> -->
-				<input type="hidden" th:value="${oneuser.id}" name="id">
-				<button type="submit">Удалить</button>
-			</form>
-
-		</div>
 	</div>
 	<button type="button" class="btn btn-info btn-sm"
 		data-bs-toggle="modal" data-bs-target="#activeModal">Show
@@ -68,13 +77,13 @@
 			</div>
 		</div>
 	</div>
-		<div>
-		<a href="/"> Main page </a>
-		<a href="/users">User Control for admin</a>
-		<a href="/devices">Devices for engineer</a>
+	<div>
+		<a href="/users">User Control for admin</a> 
+		<a href="/devices">Devices for engineer</a> 
 		<a href="/monitor">monitoring for viewer</a>
-		<a href="/values">edit values for engineer</a>
-		<a href="/logout">LOGOUT Nach!</a>
+		<a href="/monitor/events">Events for viewer</a>
+		<a href="/values">edit values for engineer</a> 
+		<a href="/logout">LOGOUT !</a>
 	</div>
 </body>
 </html>

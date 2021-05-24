@@ -11,23 +11,18 @@
 	<div>
 		<h1 th:text="${val.name} "></h1>
 	</div>
-	<div class="user-wrapper">
-		<div class="user-div">
-			<p th:text="'value id is: ' + ${val.id}" />
-			<p th:text="'units: ' + ${val.units}" />
-			<p th:text="'Device: ' + ${val.devId}" />
-			<p th:text="'Address: ' + ${val.addr}" />
-			<p th:text="'max value: ' + ${val.max}" />
-			<p th:text="'max time: ' + ${val.maxMs}" />
-			<p th:text="'min value: ' + ${val.min}" />
-			<p th:text="'min time: ' + ${val.minMs}" />
-			<!-- 			<img th:src = "@{'../images/' + ${user.login} + '.jpg'}" /> -->
-		</div>
+	<div class="value-div">
+		<p th:text="'value id is: ' + ${val.id}" />
+		<p th:text="'units: ' + ${val.units}" />
+		<p th:text="'Device: ' + ${val.devId}" />
+		<p th:text="'Address: ' + ${val.addr}" />
+		<p th:text="'max value: ' + ${val.max}" />
+		<p th:text="'min value: ' + ${val.min}" />
 	</div>
 	<div>
 		<a href="/"> Main page </a> <a href="/users">User Control for
 			admin</a> <a href="/devices">Devices for engineer</a> <a href="/monitor">monitoring
-			for viewer</a> <a href="/values">edit values for engineer</a> <a
+			for viewer</a><a href="/monitor/events">Events for viewer</a>  <a href="/values">edit values for engineer</a> <a
 			href="/logout">LOGOUT Nach!</a>
 	</div>
 

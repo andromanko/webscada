@@ -1,17 +1,17 @@
 <html xmlns:th="http://thymeleaf.org">
 <head>
-<title>Please Rlog in</title>
+<title>WebSCADA login page</title>
 <link href="styles/styles.css" rel="stylesheet" />
 <link href="styles/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 	<div class="main-wrapper">
-		<h1>Please Rsign in</h1>
+		<h1>Please log in</h1>
 		<br />
 		<div class="login-form-wrapper">
 			<form th:action="@{login}" method="post">
 				<div th:if="${param.error}">
-					<div class="alert alert-danger">RNottValid login or password.</div>
+					<div class="alert alert-danger">Not Valid login or password.</div>
 				</div>
 				<div class="form-group">
 					<input type="text" name="username" id="username"
@@ -27,7 +27,6 @@
 				</div>
 			</form>
 		</div>
-		<h1>FB sign in</h1>
 		<div>
 			<form action="/signin/facebook" method="post">
 				<input type="hidden" name="scope" value="email, public_profile" />

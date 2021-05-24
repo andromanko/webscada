@@ -1,6 +1,0 @@
-webscada\utils\communication\WebScraper.class
-webscada\utils\mail\EmailSender.class
-webscada\utils\communication\WebClientProvider.class
-webscada\utils\config\MailConfiguration.class
-webscada\utils\exceptionHandlers\Handler.class
-webscada\utils\communication\modbusTCP.class

@@ -12,10 +12,6 @@ public interface IDevService {
 
 	DevDto findDev(long id);
 
-//TODO    DevDto findDevByKeyWords(String KeyWords);
-
-//TODO    DevDto findDevByType(DevTypeDto devType);
-
 	DevDto createDev(DevDto dev);
 
 	void updateDev(long id, DevDto dev);// TODO MultipartFile file);

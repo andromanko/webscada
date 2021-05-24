@@ -1,6 +1,6 @@
-D:\R\Prg\git\webscada\webscada\utils\src\main\java\webscada\utils\communication\WebClientProvider.java
-D:\R\Prg\git\webscada\webscada\utils\src\main\java\webscada\utils\communication\WebScraper.java
-D:\R\Prg\git\webscada\webscada\utils\src\main\java\webscada\utils\mail\EmailSender.java
-D:\R\Prg\git\webscada\webscada\utils\src\main\java\webscada\utils\communication\modbusTCP.java
-D:\R\Prg\git\webscada\webscada\utils\src\main\java\webscada\utils\config\MailConfiguration.java
-D:\R\Prg\git\webscada\webscada\utils\src\main\java\webscada\utils\exceptionHandlers\Handler.java
+/home/roma/git/webscada/webscada/webscada/utils/src/main/java/webscada/utils/communication/WebScraper.java
+/home/roma/git/webscada/webscada/webscada/utils/src/main/java/webscada/utils/mail/EmailSender.java
+/home/roma/git/webscada/webscada/webscada/utils/src/main/java/webscada/utils/communication/ModbusTCP.java
+/home/roma/git/webscada/webscada/webscada/utils/src/main/java/webscada/utils/config/MailConfiguration.java
+/home/roma/git/webscada/webscada/webscada/utils/src/main/java/webscada/utils/communication/WebClientProvider.java
+/home/roma/git/webscada/webscada/webscada/utils/src/main/java/webscada/utils/exceptionHandlers/Handler.java

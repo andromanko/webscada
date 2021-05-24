@@ -28,19 +28,20 @@ public class Event extends AEntity<Integer> {
 	@Column(name = "dateTime") // время события
 	private Date dateTime;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "dev_id", referencedColumnName = "id")
-	private Dev dev_id;
+	private Dev dev;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private User user_id;
+	private User user;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "event_id", referencedColumnName = "id")
-	private TypeEvent event_id;
+	private TypeEvent eventType;
 
-	@Column(name = "chDate") // время квитирования
+	// TODO время квитирования
+	@Column(name = "chDate")
 	private Date chDate;
 
 }

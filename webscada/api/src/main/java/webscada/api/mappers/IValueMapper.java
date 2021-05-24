@@ -10,12 +10,12 @@ import webscada.entity.Value;
 
 //@Mapper
 public interface IValueMapper {
-	
+
 	Value mapValue(ValueDto source);
-	
+
 	ValueDto mapValueDto(Value source);
-	
+
 	List<Value> mapValues(List<ValueDto> sources);
-	
+
 	List<ValueDto> mapValueDtos(List<Value> sources);
 }

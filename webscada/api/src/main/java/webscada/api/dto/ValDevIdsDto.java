@@ -13,6 +13,6 @@ import lombok.Setter;
 @Builder
 public class ValDevIdsDto {
 
-    private long valueId;
-    private long devId;
+	private long valueId;
+	private long devId;
 }

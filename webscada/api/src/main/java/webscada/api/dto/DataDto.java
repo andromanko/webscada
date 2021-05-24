@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import webscada.entity.Dev;
-import webscada.entity.TypeEvent;
 
 @Getter
 @Setter

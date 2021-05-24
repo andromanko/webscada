@@ -22,42 +22,42 @@ import webscada.api.services.IUserService;
 @RequestMapping(value = "/signup")
 public class SignupController {
 
-    @Autowired
-    private IUserService userService;
-    
-    @Autowired
-    AuthenticationManager authenticationManager;
-    
-    @GetMapping
-    public String signupUser(Model model) {
-        model.addAttribute("dto", new UserDto());
-        return "signup";
-    }
+	@Autowired
+	private IUserService userService;
 
-    @PostMapping
-    public String submitCreatingUser(@ModelAttribute UserDto dto, Model model, HttpServletRequest request) {
-        try {
-            UserDto dtoNew = userService.createUser(dto);
-            model.addAttribute("dto", dtoNew);
-            authWithAuthManager(request, dtoNew.getLogin(), dtoNew.getPassword());
-        } catch (Exception e) {
-            model.addAttribute("errorMessage", e.getMessage());
-            return "/error/createEntityError";
-        }
-        return "signupResult";
-    }
+	@Autowired
+	AuthenticationManager authenticationManager;
 
-    private void authWithAuthManager(HttpServletRequest request, String username, String password) {
-        
-        UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
-        authToken.setDetails(new WebAuthenticationDetails(request));
-        
-        Authentication authentication = authenticationManager.authenticate(authToken);
-        
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        if (authentication.isAuthenticated()) {
-        	//TODO некрасиво. Переделать Возможно аргументы метода createEvent
- //       	eventService.createEvent(4,UserMapper.mapUser(userService.findUserByLogin(username)));  
-        }
-    }
+	@GetMapping
+	public String signupUser(Model model) {
+		model.addAttribute("dto", new UserDto());
+		return "signup";
+	}
+
+	@PostMapping
+	public String submitCreatingUser(@ModelAttribute UserDto dto, Model model, HttpServletRequest request) {
+		try {
+			UserDto dtoNew = userService.createUser(dto);
+			model.addAttribute("dto", dtoNew);
+			authWithAuthManager(request, dtoNew.getLogin(), dtoNew.getPassword());
+		} catch (Exception e) {
+			model.addAttribute("errorMessage", e.getMessage());
+			return "/error/createEntityError";
+		}
+		return "signupResult";
+	}
+
+	private void authWithAuthManager(HttpServletRequest request, String username, String password) {
+
+		UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+		authToken.setDetails(new WebAuthenticationDetails(request));
+
+		Authentication authentication = authenticationManager.authenticate(authToken);
+
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		if (authentication.isAuthenticated()) {
+			// TODO некрасиво. Переделать Возможно аргументы метода createEvent
+			// eventService.createEvent(4,UserMapper.mapUser(userService.findUserByLogin(username)));
+		}
+	}
 }

@@ -9,48 +9,46 @@
 <body>
 
 	<div>
-		<h1 th:text="${title}" />
-	</div>
-	<div class="user-wrapper">
-		<div th:each="onevalue : ${dataList}" class="user-div">
-			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
-			<p th:text="'value name' + ${onevalue.dataName} " />
-			<p th:text="'Value: ' + ${onevalue.value}" />
-			<p th:text="'Unit: ' + ${onevalue.dataUnit}" />
-<!-- 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a> -->
-		</div>
-	</div>
-	<button type="button" class="btn btn-info btn-sm"
-		data-bs-toggle="modal" data-bs-target="#activeModal">Show
-		user names</button>
-	<!-- th:attr="data-target='#activeModal' + ${user.id}">Show user names  -->
-
-	<div id="activeModal" class="modal fade" role="dialog">
-		<div class="modal-dialog modal-sm">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h6 class="modal-title">Users names:</h6>
-				</div>
-				<div class="modal-body">
-
-					<div th:each="oneuser : ${usersList}">
-						<p th:text="'User: ' + ${oneuser.login}" />
-					</div>
-
-					<button type="button" class="btn btn-danger btn-sm"
-						data-bs-dismiss="modal">Close</button>
-
-				</div>
-			</div>
-		</div>
+		<h1 th:text="${title}"></h1>
 	</div>
 	<div>
-		<a href="/"> Main page </a>
-		<a href="/users">User Control for admin</a>
-		<a href="/devices">Devices for engineer</a>
-		<a href="/monitor">monitoring for viewer</a>
-		<a href="/values">edit values for engineer</a>
-		<a href="/logout">LOGOUT Nach!</a>
+		<table class="table">
+			<tr>
+				<th>Наименование</th>
+				<th>Значение</th>
+				<th>Ед.изм</th>
+			</tr>
+			<tr th:each="entry,stats: ${dataList}"
+				th:with="onevalue=${entry.value}">
+				<td th:text="${onevalue.name}"></td>
+				<td th:text="${onevalue.number}"></td>
+				<td th:text="${onevalue.units}"></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="table">
+			<tr>
+				<th>DateTime</th>
+				<th>Event</th>
+				<th>User</th>
+				<th>Device</th>
+			</tr>
+			<tr th:each="event: ${eventList}">
+				<td th:text="${event.dateTime}"></td>
+				<td th:text="${event.event}"></td>
+				<td th:text="${event.user}"></td>
+				<td th:text="${event.dev}"></td>
+				<!-- 				TODO next version добавить квитирование <td th:text="'Квитирование: ' + ${event.chDate}"></td>-->
+			</tr>
+		</table>
+	</div>
+	<h3 th:text="${profile}"> </h3>
+	<div>
+		<a href="/users">User Control for admin</a> <a href="/devices">Devices
+			for engineer</a> <a href="/monitor">monitoring for viewer</a> <a
+			href="/monitor/events">Events for viewer</a> <a href="/values">edit
+			values for engineer</a> <a href="/logout">LOGOUT !</a>
 	</div>
 </body>
 </html>

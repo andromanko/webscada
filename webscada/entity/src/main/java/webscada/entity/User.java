@@ -51,7 +51,7 @@ public class User extends AEntity<Long> {
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
 	private Set<Role> roles;
-	
-	@OneToMany(mappedBy = "user_id", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
+
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, orphanRemoval = true)
 	private List<Event> events;
 }

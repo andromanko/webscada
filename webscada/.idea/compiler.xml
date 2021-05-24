@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rest" />
+        <module name="dao" />
+        <module name="utils" />
+        <module name="logger" />
+        <module name="main" />
+        <module name="api" />
+        <module name="services" />
+        <module name="entity" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="api" target="1.8" />
+      <module name="dao" target="1.8" />
+      <module name="entity" target="1.8" />
+      <module name="logger" target="1.8" />
+      <module name="main" target="1.8" />
+      <module name="rest" target="1.8" />
+      <module name="services" target="1.8" />
+      <module name="utils" target="1.8" />
+      <module name="webscada" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="api" options="-parameters" />
+      <module name="dao" options="-parameters" />
+      <module name="entity" options="-parameters" />
+      <module name="logger" options="-parameters" />
+      <module name="main" options="-parameters" />
+      <module name="rest" options="-parameters" />
+      <module name="services" options="-parameters" />
+      <module name="utils" options="-parameters" />
+    </option>
+  </component>
+</project>

@@ -1,0 +1,45 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>webscada-monitor</title>
+<link href="styles/styles.css" rel="stylesheet" />
+<link href="styles/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<h1 th:text="${title}" > </h1>
+	</div>
+	
+	 <div th:each="entry,stats: ${dataList}">
+      
+      <select th:field="*{entries[__${entryStat.index}__].id}">
+        <option th:each="key : ${keys}" th:value="${key}" th:text="${key}"></option>
+      </select>
+      <select multiple="multiple" th:field="*{entries[__${entryStat.index}__].values}">
+        <option th:each="value : ${values}" th:value="${value}" th:text="${value}"></option>
+      </select>
+    </div>
+	
+	
+	<div class="user-wrapper">
+		<div th:each="onevalue : ${dataList}" class="user-div">
+			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
+			<p th:text="'-' + ${onevalue.name} " />
+			<p th:text="':' + ${onevalue.number}" />
+			<p th:text="' ' + ${onevalue.units}" />
+<!-- 			<a th:href="@{'users/' + ${oneuser.id}}">More info</a> -->
+		</div>
+	</div>
+
+	<div>
+		<a href="/"> Main page </a>
+		<a href="/users">User Control for admin</a>
+		<a href="/devices">Devices for engineer</a>
+		<a href="/monitor">monitoring for viewer</a>
+		<a href="/values">edit values for engineer</a>
+		<a href="/logout">LOGOUT Nach!</a>
+	</div>
+</body>
+</html>

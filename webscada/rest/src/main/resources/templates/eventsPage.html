@@ -1,0 +1,60 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Events</title>
+<link href="styles/styles.css" rel="stylesheet" />
+<link href="styles/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<h1>EVENTS</h1>
+	</div>
+ <a href="/monitor/events?pageNumber=1&size=10"> page 1 size 10</a>
+ <a href="/monitor/events?pageNumber=2&size=10"> page 2 size 10</a>
+ <a href="/monitor/events?pageNumber=3&size=10"> page 3 size 10</a>
+ <a href="/monitor/events?pageNumber=4&size=10"> page 4 size 10</a>
+ <a href="/monitor/events?pageNumber=1"> page 1 size default(20)</a>
+		<table class="table" >
+			<tr> <th>DateTime</th> <th>Event</th><th>User</th><th>Device</th></tr>
+			<tr th:each="event: ${eventList}" class="event-div">
+				<td th:text="${event.dateTime}"></td>
+				<td th:text="${event.event}"></td>
+				<td th:text="${event.user}"></td>
+				<td th:text="${event.dev}"></td>
+<!-- 				TODO next version добавить квитирование <td th:text="'Квитирование: ' + ${event.chDate}"></td>-->
+			</tr>
+		</table>
+		
+<!-- 		<nav aria-label="Page navigation" class="paging"> -->
+<!--                 <ul class="pagination" th:if="${posts.page.totalPages > 1}"> -->
+<!--                     <li class="page-item" th:classappend="${!posts.paging.isPrevEnabled()? 'disabled' : ''}"> -->
+<!--                         <a class="page-link" th:href="@{'/?pageNumber=' + ${posts.paging.pageNumber - 1}}" -->
+<!--                            tabindex="-1">Previous</a> -->
+<!--                     </li> -->
+<!--                     <th:block th:each="item : ${posts.paging.getItems()}"> -->
+<!--                         <li class="page-item" th:classappend="${item.index == posts.paging.pageNumber? 'active' : ''}" -->
+<!--                             th:if="${item.pageItemType.name() == 'PAGE'}"> -->
+<!--                             <a class="page-link" th:href="@{'/?pageNumber=' + ${item.index}}" -->
+<!--                                th:text="${item.index}"></a> -->
+<!--                         </li> -->
+<!--                         <li class="page-item disabled" th:if="${item.pageItemType.name() == 'DOTS'}"> -->
+<!--                             <a class="page-link" href="#">...</a> -->
+<!--                         </li> -->
+<!--                     </th:block> -->
+<!--                     <li class="page-item" th:classappend="${!posts.paging.isNextEnabled()? 'disabled' : ''}"> -->
+<!--                         <a class="page-link" th:href="@{'/?pageNumber=' + ${posts.paging.pageNumber + 1}}">Next</a> -->
+<!--                     </li> -->
+<!--                 </ul> -->
+<!--             </nav> -->
+		
+	
+	<div>
+		<a href="/users">User Control for admin</a> <a href="/devices">Devices
+			for engineer</a> <a href="/monitor">monitoring for viewer</a> <a
+			href="/monitor/events">Events for viewer</a> <a href="/values">edit
+			values for engineer</a> <a href="/logout">LOGOUT !</a>
+	</div>
+</body>
+</html>

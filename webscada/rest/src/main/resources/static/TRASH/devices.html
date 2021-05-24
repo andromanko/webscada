@@ -1,0 +1,55 @@
+<html xmlns:th="http://thymeleaf.org">
+<head>
+<title>Devices page for Engineer</title>
+<link href="styles/styles.css" rel="stylesheet" />
+<link href="styles/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div>
+		<h1 th:text="${title}" />
+	</div>
+	<div class="user-wrapper">
+		<div th:each="oneuser : ${usersList}" class="user-div">
+			<!-- <p th:text="'User id is: ' + ${user.id}" /> -->
+			<p th:text="'User name is: ' + ${oneuser.login}" />
+			<p th:text="'User e-mail is: ' + ${oneuser.email}" />
+			<a th:href="@{'users/' + ${oneuser.id}}">More info</a>
+		</div>
+	</div>
+	<button type="button" class="btn btn-info btn-sm"
+		data-bs-toggle="modal" data-bs-target="#activeModal">Show
+		user names</button>
+	<!-- th:attr="data-target='#activeModal' + ${user.id}">Show user names  -->
+
+	<div id="activeModal" class="modal fade" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h6 class="modal-title">Users names:</h6>
+				</div>
+				<div class="modal-body">
+
+					<div th:each="oneuser : ${usersList}">
+						<p th:text="'User: ' + ${oneuser.login}" />
+					</div>
+
+					<button type="button" class="btn btn-danger btn-sm"
+						data-bs-dismiss="modal">Close</button>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<a href="/"> Main page </a>
+		<a href="/users">User Control for admin</a>
+		<a href="/devices">Devices for engineer</a>
+		<a href="/monitor">monitoring for viewer</a>
+		<a href="/values">edit values for engineer</a>
+		<a href="/logout">LOGOUT Nach!</a>
+	</div>
+</body>
+</html>

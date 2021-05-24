@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="049e7be4-f493-4e65-a8ef-c7b70df811e4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/log/app.log" beforeDir="false" afterPath="$PROJECT_DIR$/log/app.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dao/IAGenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dao/IAGenericDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dao/IDevTypeJPADao.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dao/IDevTypeJPADao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dto/DevDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dto/DevDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dto/DevTypeDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dto/DevTypeDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dto/EventDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/dto/EventDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/mappers/DevMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/mappers/DevMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/mappers/DevTypeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/mappers/DevTypeMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/mappers/ValueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/mappers/ValueMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/services/IDataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/services/IDataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/services/IDevService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/services/IDevService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/services/IEventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/services/IEventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/utils/IModbusTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/src/main/java/webscada/api/utils/IModbusTCP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/api-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/api-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/META-INF/maven/webscada/api/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/META-INF/maven/webscada/api/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dao/IAGenericDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dao/IAGenericDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dao/IDevTypeJPADao.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dao/IDevTypeJPADao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevDto$DevDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevDto$DevDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevTypeDto$DevTypeDtoBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevTypeDto$DevTypeDtoBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevTypeDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/dto/DevTypeDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/mappers/DevMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/mappers/DevMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/mappers/ValueMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/mappers/ValueMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/services/IDataService.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/classes/webscada/api/services/IDataService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/generated-sources/annotations/webscada/api/mappers/DevTypeMapperImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/generated-sources/annotations/webscada/api/mappers/EventMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/generated-sources/annotations/webscada/api/mappers/EventMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/api/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/src/main/java/webscada/dao/AGenericDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/src/main/java/webscada/dao/AGenericDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/src/main/java/webscada/dao/UserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/src/main/java/webscada/dao/UserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/target/classes/META-INF/maven/webscada/dao/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/target/classes/META-INF/maven/webscada/dao/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/target/classes/META-INF/maven/webscada/dao/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/target/classes/META-INF/maven/webscada/dao/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/target/classes/webscada/dao/AGenericDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/target/classes/webscada/dao/AGenericDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/target/classes/webscada/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/target/classes/webscada/dao/UserDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/target/dao-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/target/dao-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/dao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/dao/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/Dev.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/Dev.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/DevType.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/DevType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/TypeEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/TypeEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/Value.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/src/main/java/webscada/entity/Value.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/META-INF/maven/webscada/entity/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/META-INF/maven/webscada/entity/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/AEntity$AEntityBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/AEntity$AEntityBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/AEntity.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/AEntity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Dev$DevBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Dev$DevBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Dev$DevBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Dev$DevBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Dev.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Dev.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/DevType$DevTypeBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/DevType$DevTypeBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/DevType$DevTypeBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/DevType$DevTypeBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/DevType.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/DevType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Event$EventBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Event$EventBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Event$EventBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Event$EventBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Event.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Event.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Role$RoleBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Role$RoleBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Role$RoleBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Role$RoleBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Role.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Role.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeDev$TypeDevBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeDev$TypeDevBuilderImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeDev.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeEvent$TypeEventBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeEvent$TypeEventBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeEvent$TypeEventBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeEvent$TypeEventBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeEvent.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypeEvent.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypesEvents$TypesEventsBuilder.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypesEvents$TypesEventsBuilderImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/TypesEvents.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/User$UserBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/User$UserBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/User$UserBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/User$UserBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Value$ValueBuilder.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Value$ValueBuilder.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Value$ValueBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Value$ValueBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Value.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/classes/webscada/entity/Value.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/entity/target/entity-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/entity/target/entity-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/logger/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/logger/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/logger/target/classes/META-INF/maven/webscada/logger/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/logger/target/classes/META-INF/maven/webscada/logger/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/logger/target/classes/webscada/logger/ServiceLogger.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/logger/target/classes/webscada/logger/ServiceLogger.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/logger/target/logger-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/logger/target/logger-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/src/main/java/webscada/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/src/main/java/webscada/Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/target/classes/META-INF/maven/webscada/main/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/target/classes/META-INF/maven/webscada/main/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/target/classes/webscada/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/target/classes/webscada/Application.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/target/main-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/target/main-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/target/main-0.0.1-SNAPSHOT.jar.original" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/target/main-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/main/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/config/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/config/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/controllers/DataController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/controllers/DataController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/controllers/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/java/webscada/rest/controllers/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/static/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/static/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/devicePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/devicePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/devicesPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/devicesPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/error/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/error/403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/monitor.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/monitor.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/userPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/userPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/usersPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/usersPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/valuePage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/src/main/resources/templates/valuePage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/classes/META-INF/maven/webscada/rest/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/classes/META-INF/maven/webscada/rest/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/classes/static/styles/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/classes/static/styles/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/classes/templates/userPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/classes/templates/userPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/classes/templates/usersPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/classes/templates/usersPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/classes/webscada/rest/config/SecurityConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/classes/webscada/rest/config/SecurityConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/classes/webscada/rest/controllers/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/classes/webscada/rest/controllers/MainController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/classes/webscada/rest/controllers/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/classes/webscada/rest/controllers/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/rest/target/rest-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/rest/target/rest-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/.classpath" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/src/main/java/webscada/services/services/DataService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/src/main/java/webscada/services/services/DataService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/src/main/java/webscada/services/services/EventService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/src/main/java/webscada/services/services/EventService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/src/main/java/webscada/services/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/src/main/java/webscada/services/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/target/classes/META-INF/maven/webscada/services/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/target/classes/META-INF/maven/webscada/services/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/target/classes/META-INF/maven/webscada/services/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/target/classes/META-INF/maven/webscada/services/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/target/classes/webscada/services/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/target/classes/webscada/services/services/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/services/target/services-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/services/target/services-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/src/main/java/webscada/utils/communication/WebScraper.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/src/main/java/webscada/utils/communication/WebScraper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/src/main/java/webscada/utils/communication/modbusTCP.java" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/src/main/java/webscada/utils/communication/ModbusTCP.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/target/classes/META-INF/maven/webscada/utils/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/target/classes/META-INF/maven/webscada/utils/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/target/classes/META-INF/maven/webscada/utils/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/target/classes/META-INF/maven/webscada/utils/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/target/classes/webscada/utils/communication/WebScraper.class" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/target/classes/webscada/utils/communication/WebScraper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/webscada/utils/target/utils-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webscada/utils/target/utils-0.0.1-SNAPSHOT.jar" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1sktwK5R6Vh1RvSU06R1cwLAaJV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="049e7be4-f493-4e65-a8ef-c7b70df811e4" name="Default Changelist" comment="" />
+      <created>1621428655441</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1621428655441</updated>
+    </task>
+    <servers />
+  </component>
+</project>
